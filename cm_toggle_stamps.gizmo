@@ -1,0 +1,29 @@
+#! C:/Program Files/Nuke12.1v2/nuke-12.1.2.dll -nx
+version 12.1 v2
+Gizmo {
+ inputs 0
+ tile_color 0xff8900ff
+ note_font_size 21
+ addUserKnob {20 User l "Toggle Stamps"}
+ addUserKnob {26 text_1 l "" +STARTLINE}
+ addUserKnob {22 python_button l "Postage Stamps On" T "with nuke.root():\n    all_stamps = nuke.allNodes()\n    for a in all_stamps:\n        try:\n            a \['postage_stamp'].setValue(1)\n        except:\n            pass" +STARTLINE}
+ addUserKnob {22 python_button_1 l "Postage Stamps Off" -STARTLINE T "with nuke.root():\n    all_stamps = nuke.allNodes()\n    for a in all_stamps:\n        try:\n            a \['postage_stamp'].setValue(0)\n        except:\n            pass"}
+ addUserKnob {26 text l "" +STARTLINE}
+ addUserKnob {26 text_2 l "" +STARTLINE T "cm_toggle_stamps v1.0 - (c) 2020 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
+}
+ NoOp {
+  inputs 0
+  name cm_toggle_stamps
+  tile_color 0xff7a00ff
+  note_font_size 61
+  note_font_color 0xff
+  xpos -300
+  ypos -441
+  addUserKnob {20 toggleTab l "Toggle Postage Stamps"}
+ }
+ Output {
+  name Output1
+  xpos -300
+  ypos -258
+ }
+end_group

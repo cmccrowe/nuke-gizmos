@@ -3,6 +3,7 @@ version 12.1 v2
 Gizmo {
  tile_color 0xff
  postage_stamp true
+ lock_connections true
  addUserKnob {20 tab l cm_alpha}
  addUserKnob {26 text_1 l "" +STARTLINE T "Plug in something with an alpha"}
  addUserKnob {26 "" +STARTLINE}

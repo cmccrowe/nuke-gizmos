@@ -1,0 +1,155 @@
+#! C:/Program Files/Nuke12.1v2/nuke-12.1.2.dll -nx
+version 12.1 v2
+Gizmo {
+ inputs 2
+ tile_color 0xf9811fff
+ note_font "Verdana Bold"
+ addUserKnob {20 Setting_Tab l STMAP_Warp t Settings}
+ addUserKnob {26 text_1 l Transform}
+ addUserKnob {41 translate T Transform7.translate}
+ addUserKnob {41 rotate T Transform7.rotate}
+ addUserKnob {41 scale T Transform7.scale}
+ addUserKnob {41 skewX l "skew X" T Transform7.skewX}
+ addUserKnob {41 skewY l "skew Y" T Transform7.skewY}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 filter T Transform7.filter}
+ addUserKnob {26 blur_divider l "" +STARTLINE}
+ addUserKnob {41 size l "Blur Edges" T Blur64.size}
+ addUserKnob {26 ""}
+ addUserKnob {41 numpixels l "Add Pixels" T AdjBBox1.numpixels}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 which l Mix t On/Off T Dissolve4.which}
+ addUserKnob {26 ""}
+ addUserKnob {26 Author_text l "" +STARTLINE T "STMAP_Warp v1.0 - (c) 2020 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
+}
+ Input {
+  inputs 0
+  name Mask
+  xpos 437
+  ypos -211
+  number 1
+ }
+ AddChannels {
+  channels alpha
+  name AddChannels1
+  xpos 437
+  ypos -168
+ }
+ Blur {
+  channels alpha
+  name Blur64
+  note_font "Bitstream Vera Sans"
+  xpos 437
+  ypos -115
+ }
+ Input {
+  inputs 0
+  name Image
+  xpos 147
+  ypos -338
+ }
+ Dot {
+  name Dot217
+  note_font "Bitstream Vera Sans"
+  xpos 175
+  ypos -240
+ }
+set N4351c000 [stack 0]
+ Dot {
+  name Dot1
+  xpos 303
+  ypos -240
+ }
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name Shuffle1
+  label "Original 1-1 map"
+  xpos 275
+  ypos -198
+ }
+ Expression {
+  temp_name0 s
+  temp_expr0 width
+  temp_name1 t
+  temp_expr1 height
+  expr0 (x/s)
+  expr1 (y/t)
+  name Expression3
+  xpos 275
+  ypos -150
+ }
+ Expression {
+  temp_name0 s
+  temp_expr0 (1-g(width,height))/2
+  temp_name1 t
+  temp_expr1 "(1 - r(width, height))/2"
+  expr0 "r + t"
+  expr1 g+s
+  name Expression4
+  xpos 275
+  ypos -124
+ }
+ AdjBBox {
+  name AdjBBox1
+  xpos 275
+  ypos -98
+ }
+ Shuffle {
+  alpha white
+  name Shuffle7
+  xpos 275
+  ypos -74
+ }
+set N43548c00 [stack 0]
+ TransformMasked {
+  inputs 1+1
+  translate {50 0}
+  center {1289 689}
+  name Transform7
+  note_font "Bitstream Vera Sans"
+  xpos 437
+  ypos -80
+ }
+push $N43548c00
+ Dissolve {
+  inputs 2
+  which 1
+  name Dissolve4
+  note_font "Bitstream Vera Sans"
+  xpos 275
+  ypos -48
+ }
+ Dot {
+  name Dot2
+  xpos 303
+  ypos 7
+ }
+push $N4351c000
+ STMap {
+  inputs 2
+  uv rgb
+  name STMap1
+  note_font "Bitstream Vera Sans"
+  xpos 147
+  ypos 3
+ }
+ Output {
+  name Output1
+  xpos 147
+  ypos 104
+ }
+ Viewer {
+  inputs 0
+  frame 1052
+  frame_range 1001-1100
+  show_overscan true
+  overscan 500
+  name Viewer1
+  selected true
+  xpos 749
+  ypos 63
+ }
+end_group

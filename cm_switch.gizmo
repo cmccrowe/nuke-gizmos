@@ -1,0 +1,48 @@
+#! C:/Program Files/Nuke12.1v2/nuke-12.1.2.dll -nx
+version 12.1 v2
+Gizmo {
+ inputs 2
+ tile_color 0xff0000ff
+ label "\[value which]"
+ addUserKnob {20 User l cm_switch}
+ addUserKnob {41 which T switch.which}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 info l "" +STARTLINE T "disable = dark red\n\n0 = red\n1 = green\n2 = blue\n"}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 text l "" +STARTLINE T "cm_switch v1.0 - (c) 2020 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
+ addUserKnob {20 secrets +INVISIBLE}
+ addUserKnob {3 secretNumbers l "Secret Numbers"}
+ secretNumbers {{"\[if \{\[value disable]==true\} \{\nknob tile_color 0x4c0d00ff\nbrake\}]\n\n\[if \{\[value which]<1\} then \{\nknob tile_color 0xff0000ff\n\} elseif \{\[value which]==1\} then \{\nknob tile_color 0xff00ff\n\} else \{\nknob tile_color 0xffff\}]\n\n\[value this.which]"}}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 99
+  ypos -434
+  number 1
+ }
+ Input {
+  inputs 0
+  name Input0
+  xpos 332
+  ypos -421
+ }
+ Switch {
+  inputs 2
+  name switch
+  tile_color 0xff0000ff
+  label "\[value which]\n"
+  note_font "DejaVu Sans Bold"
+  xpos 221
+  ypos -328
+  addUserKnob {20 CM}
+  addUserKnob {3 changeColor l INVISIBLE}
+  changeColor {{"\[if \{\[value disable]==true\} \{\nknob tile_color 0x4c0d00ff\nbrake\}]\n\n\[if \{\[value which]<1\} then \{\nknob tile_color 0xff0000ff\n\} elseif \{\[value which]==1\} then \{\nknob tile_color 0xff00ff\n\} else \{\nknob tile_color 0xffff\}]\n\n\[value this.which]"}}
+  addUserKnob {26 info l "" +STARTLINE T "disable = dark red\n\n0 = red\n1 = green\n2 = blue\n"}
+ }
+ Output {
+  name Output1
+  xpos 221
+  ypos -231
+ }
+end_group

@@ -1,0 +1,51 @@
+#! C:/Program Files/Nuke12.1v2/nuke-12.1.2.dll -nx
+version 12.1 v2
+Gizmo {
+ tile_color 0xaaa25aff
+ addUserKnob {20 User}
+ addUserKnob {41 message T Display.message}
+ addUserKnob {26 text l "" +STARTLINE T "cm_display_current_frame v1.0 - (c) 2020 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 221
+  ypos -377
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[frame]"
+  old_message {{49 48 53 51}
+    }
+  old_expression_markers {{0 3}
+    }
+  box {19.5 1369.5 648.5 1670.5}
+  transforms {{0 2}
+    }
+  cursor_position 7
+  font {{ Trebuchet MS : Regular : trebuc.ttf : 0 }}
+  global_font_scale 3
+  center {2048 858}
+  cursor_initialised true
+  initial_cursor_position {{19.5 1670.5}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 2048 858 0 0 1 1 0 0 0 0}
+    }
+  name Display
+  tile_color 0xff0000ff
+  label "Current Frame: \[frame]"
+  note_font "Bitstream Vera Sans Bold"
+  note_font_size 21
+  note_font_color 0xedededff
+  xpos 221
+  ypos -330
+ }
+ Output {
+  name Output1
+  xpos 221
+  ypos -237
+ }
+end_group

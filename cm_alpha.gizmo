@@ -1,0 +1,28 @@
+#! C:/Program Files/Nuke12.1v2/nuke-12.1.2.dll -nx
+version 12.1 v2
+Gizmo {
+ tile_color 0xff
+ postage_stamp true
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 221
+  ypos -400
+ }
+ Shuffle {
+  in alpha
+  name cm_alpha
+  tile_color 0xff
+  note_font "Verdana Bold"
+  note_font_size 21
+  xpos 221
+  ypos -360
+  postage_stamp true
+ }
+ Output {
+  name Output1
+  xpos 221
+  ypos -260
+ }
+end_group

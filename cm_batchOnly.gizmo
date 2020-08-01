@@ -1,0 +1,43 @@
+#! C:/Program Files/Nuke12.1v2/nuke-12.1.2.dll -nx
+version 12.1 v2
+Gizmo {
+ inputs 2
+ addUserKnob {20 batchOnlyTab l BatchOnly}
+ addUserKnob {26 Description l "" +STARTLINE T "This node uses the \$gui expression to bypass process heavy node until render time.\n\n\n\n\n\n"}
+ addUserKnob {26 ""}
+ addUserKnob {26 text l "" +STARTLINE T "BatchOnly v1.0 Copyright Chris McCrowe 2021"}
+}
+ Input {
+  inputs 0
+  name interactive
+  xpos 189
+  ypos 52
+  number 1
+ }
+ Input {
+  inputs 0
+  name batch
+  xpos -17
+  ypos -55
+ }
+ Switch {
+  inputs 2
+  which {{"\$gui"}}
+  name Switch1
+  xpos -17
+  ypos 52
+ }
+set Nd7b19400 [stack 0]
+ Output {
+  name Output1
+  xpos -17
+  ypos 125
+ }
+push $Nd7b19400
+ Viewer {
+  frame_range 1001-1100
+  name Viewer1
+  xpos 177
+  ypos 153
+ }
+end_group

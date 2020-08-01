@@ -3,6 +3,10 @@ version 12.1 v2
 Gizmo {
  tile_color 0xff
  postage_stamp true
+ addUserKnob {20 tab l cm_alpha}
+ addUserKnob {26 text_1 l "" +STARTLINE T "Plug in something with an alpha"}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 text l "" +STARTLINE T "cm_alpha v1.0 - (c) 2020 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
 }
  Input {
   inputs 0

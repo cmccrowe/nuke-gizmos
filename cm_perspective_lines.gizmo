@@ -3,19 +3,23 @@ version 12.1 v2
 Gizmo {
  inputs 0
  tile_color 0x131313ff
- label _lines
+ label Lines
  note_font "Verdana Bold"
  note_font_size 16
  postage_stamp true
- addUserKnob {20 User}
+ addUserKnob {20 User l cm_perspective_lines}
  addUserKnob {12 Center l "Center Point"}
- Center {1349 817}
+ Center {835 1635}
  addUserKnob {3 LinThickness l "Line Thickness"}
  LinThickness 1
  addUserKnob {41 multiply T Grade1.multiply}
  addUserKnob {6 HorizonCheckBox l "Disable Horizon Line" +STARTLINE}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {6 boolean l crop +STARTLINE}
+ boolean true
+ addUserKnob {41 reset l "Reset Format" -STARTLINE T Crop1.reset}
  addUserKnob {26 ""}
- addUserKnob {26 aboutTXT l "" +STARTLINE T "Perspective Lines v1.0 - (c) 2019 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#33B2FF;\">www.chrismccrowe.com</a>"}
+ addUserKnob {26 aboutTXT l "" +STARTLINE T "Perspective Lines v1.0 - (c) 2020 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#33B2FF;\">www.chrismccrowe.com</a>"}
 }
  Roto {
   inputs 0
@@ -25,7 +29,7 @@ Gizmo {
   {f 0}
   {n
    {layer Root
-    {f 2097664}
+    {f 2097152}
     {t x44648000 x44428000}
     {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
     {curvegroup OpenSpline1 1049088 bezier
@@ -34,17 +38,17 @@ Gizmo {
        {px x447a4000
         {0 0}
         {{a osw
-	  {{x447a4000 1}}	 osf
-	  {{x447a4000 0}}}
-	 {=0 x419fffe2}
-	 {=cm_perspective.Center.y x44338001}}
+       {{x447a4000 1}}	 osf
+       {{x447a4000 0}}}
+      {=0 x419fffe2}
+      {=Perspective.Center.y x44338001}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x447a4000 1}}	 osf
-	  {{x447a4000 0}}}
+       {{x447a4000 1}}	 osf
+       {{x447a4000 0}}}
 	 {=root.format.r x44e40000}
-	 {=cm_perspective.Center.y x44444000}}
+	 {=Perspective.Center.y x44444000}}
         {0 0}}}     idem}
      {tx x447a4000 x44628000 x443fe000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x447a4000 ltm x447a4000 tt x41200000}}}}}}
@@ -79,7 +83,7 @@ Gizmo {
   openspline_width 1
   name HorizonRoto
   xpos -290
-  ypos -379
+  ypos -370
  }
  Dilate {
   size 2
@@ -104,7 +108,7 @@ Gizmo {
   message HORIZON
   old_message {{72 79 82 73 90 79 78}
     }
-  box {0 1525 67 {cm_perspective.Center.y}}
+  box {0 1525 67 {Perspective.Center.y}}
   transforms {{0 2}
     }
   font_size_values {{0 30 1 30 2 30 3 30 4 30 5 30 6 30 0 20 1 20 2 20 3 20 4 20 5 20 6 20}
@@ -147,17 +151,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=0 x430b3335}
-	 {=root.format.t*.2 x43440000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=0 x430b3335}
+      {=root.format.t*.2 x43440000}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44660000}
-	 {=cm_perspective.Center.y x443a0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44660000}
+	 {=Perspective.Center.y x443a0000}}
         {0 0}}}     idem}
      {tx x44854000 x43e60000 x43fe0000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -167,17 +171,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=0 x429999a0}
-	 {=root.format.t*.37 x43f2428d}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=0 x429999a0}
+      {=root.format.t*.37 x43f2428d}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44660000}
-	 {=cm_perspective.Center.y x443d0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44660000}
+	 {=Perspective.Center.y x443d0000}}
         {0 0}}}     idem}
      {tx x44854000 x43e48000 x44260000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -187,17 +191,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=0 x42b199a0}
-	 {=root.format.t*.5 x441c199a}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=0 x42b199a0}
+      {=root.format.t*.5 x441c199a}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44650000}
-	 {=cm_perspective.Center.y x443c0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44650000}
+	 {=Perspective.Center.y x443c0000}}
         {0 0}}}     idem}
      {tx x44854000 x43df8000 x443c0000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -207,17 +211,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=0 x4299999c}
-	 {=root.format.t*.65 x4451a667}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=0 x4299999c}
+      {=root.format.t*.65 x4451a667}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44670000}
-	 {=cm_perspective.Center.y x443a0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44670000}
+	 {=Perspective.Center.y x443a0000}}
         {0 0}}}     idem}
      {tx x44854000 x43e38000 x44628000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -241,17 +245,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=0 x42b66664}
-	 {=root.format.t*.8 x44779999}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=0 x42b66664}
+      {=root.format.t*.8 x44779999}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44651333}
-	 {=cm_perspective.Center.y x443a0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44651333}
+	 {=Perspective.Center.y x443a0000}}
         {0 0}}}     idem}
      {tx x44854000 x43e50000 x44810000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -261,17 +265,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=0 xc345a66d}
-	 {=root.format.t x449cd000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=0 xc345a66d}
+      {=root.format.t x449cd000}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44640000}
-	 {=cm_perspective.Center.y x443c0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44640000}
+	 {=Perspective.Center.y x443c0000}}
         {0 0}}}     idem}
      {tx x44854000 x43e30000 x448e8000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -281,17 +285,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=root.format.t*.2 x43166667}
-	 {=root.format.t x44c0d333}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=root.format.t*.2 x43166667}
+      {=root.format.t x44c0d333}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44670000}
-	 {=cm_perspective.Center.y x443b0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44670000}
+	 {=Perspective.Center.y x443b0000}}
         {0 0}}}     idem}
      {tx x44854000 x4420c000 x448f8000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -301,17 +305,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=root.format.r*.35 x440bd999}
-	 {=root.format.t x44c35666}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=root.format.r*.35 x440bd999}
+      {=root.format.t x44c35666}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44698000}
-	 {=cm_perspective.Center.y x44390000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44698000}
+	 {=Perspective.Center.y x44390000}}
         {0 0}}}     idem}
      {tx x44854000 x444e0000 x448f0000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -321,17 +325,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 xbf800000}}}
-	 {=root.format.r*.5 x4448dccd}
-	 {=root.format.t x44ca0999}}
+       {{x44854000 1}}	 osf
+       {{x44854000 xbf800000}}}
+      {=root.format.r*.5 x4448dccd}
+      {=root.format.t x44ca0999}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44690000}
-	 {=cm_perspective.Center.y x44380000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44690000}
+	 {=Perspective.Center.y x44380000}}
         {0 0}}}     idem}
      {tx x44854000 x446d0000 x448ec000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -341,17 +345,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=root.format.r*.65 x4470efff}
-	 {=root.format.t x44c28000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=root.format.r*.65 x4470efff}
+      {=root.format.t x44c28000}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44698000}
-	 {=cm_perspective.Center.y x44390000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44698000}
+	 {=Perspective.Center.y x44390000}}
         {0 0}}}     idem}
      {tx x44854000 x4484c000 x448f8000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -361,17 +365,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=root.format.r*.8 x44991199}
-	 {=root.format.t x44c0d334}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=root.format.r*.8 x44991199}
+      {=root.format.t x44c0d334}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x446a8000}
-	 {=cm_perspective.Center.y x443e0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x446a8000}
+	 {=Perspective.Center.y x443e0000}}
         {0 0}}}     idem}
      {tx x44854000 x4497a000 x448f8000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -381,17 +385,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=root.format.r x44d1a800}
-	 {=root.format.t x44c42ccd}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=root.format.r x44d1a800}
+      {=root.format.t x44c42ccd}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x446a6cce}
-	 {=cm_perspective.Center.y x44390000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x446a6cce}
+	 {=Perspective.Center.y x44390000}}
         {0 0}}}     idem}
      {tx x44854000 x44ac6000 x448e8000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -401,17 +405,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
 	 {=root.format.r x44e3c000}
 	 {=root.format.t*.8 x44a38000}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44688000}
-	 {=cm_perspective.Center.y x443c0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44688000}
+	 {=Perspective.Center.y x443c0000}}
         {0 0}}}     idem}
      {tx x44854000 x44ac0000 x4480c000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -421,17 +425,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
 	 {=root.format.r x44e5d333}
-	 {=root.format.t*.5 x4420e666}}
+      {=root.format.t*.5 x4420e666}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44668000}
-	 {=cm_perspective.Center.y x44390000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=Perspective.Center.x x44668000}
+	 {=Perspective.Center.y x44390000}}
         {0 0}}}     idem}
      {tx x44854000 x44ab8000 x445a8000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -441,17 +445,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
 	 {=root.format.r x44e48000}
 	 {=root.format.t*.5 x44360000}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44670000}
-	 {=cm_perspective.Center.y x443d0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44670000}
+	 {=Perspective.Center.y x443d0000}}
         {0 0}}}     idem}
      {tx x44854000 x44ac0000 x44398000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -461,17 +465,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=root.format.r x44e44000}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=root.format.r x44e44000}
 	 {=root.format.t*.37 x43fa0000}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44670000}
-	 {=cm_perspective.Center.y x443a0000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44670000}
+	 {=Perspective.Center.y x443a0000}}
         {0 0}}}     idem}
      {tx x44854000 x44abe000 x441b8000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -481,17 +485,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
 	 {=root.format.r x44e34000}
 	 {=root.format.r*.2 x433c0000}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44678000}
-	 {=cm_perspective.Center.y x44390000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44678000}
+	 {=Perspective.Center.y x44390000}}
         {0 0}}}     idem}
      {tx x44854000 x44ab8000 x43e80000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -501,17 +505,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=root.format.r x44d34802}
-	 {=0 xc3934004}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=root.format.r x44d34802}
+      {=0 xc3934004}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44680000}
-	 {=cm_perspective.Center.y x44390000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44680000}
+	 {=Perspective.Center.y x44390000}}
         {0 0}}}     idem}
      {tx x44854000 x44ac6000 x43b80000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -521,17 +525,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
 	 {=root.format.r*.8 x44b74000}
 	 {=0 0}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44668000}
-	 {=cm_perspective.Center.y x44370000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44668000}
+	 {=Perspective.Center.y x44370000}}
         {0 0}}}     idem}
      {tx x44854000 x44954000 x43b70000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -541,17 +545,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
 	 {=root.format.r*.65 x448f8000}
-	 {=0 xc0800000}}
+      {=0 xc0800000}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44650000}
-	 {=cm_perspective.Center.y x44340000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44650000}
+	 {=Perspective.Center.y x44340000}}
         {0 0}}}     idem}
      {tx x44854000 x44810000 x43b30000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -561,17 +565,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=root.format.r*.5 x443d8000}
-	 {=0 xc23ffff1}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=root.format.r*.5 x443d8000}
+      {=0 xc23ffff1}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44660000}
-	 {=cm_perspective.Center.y x44380000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44660000}
+	 {=Perspective.Center.y x44380000}}
         {0 0}}}     idem}
      {tx x44854000 x44638000 x43b70000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -581,17 +585,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
 	 {=root.format.r*.35 x43ec0000}
-	 {=0 xc1000000}}
+      {=0 xc1000000}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44668000}
-	 {=cm_perspective.Center.y x44360000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44668000}
+	 {=Perspective.Center.y x44360000}}
         {0 0}}}     idem}
      {tx x44854000 x442e4000 x43b40000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -601,17 +605,17 @@ Gizmo {
        {px x44854000
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=root.format.r*.2 x4433c000}
-	 {=0 xc388ccce}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+      {=root.format.r*.2 x4433c000}
+      {=0 xc388ccce}}
         {0 0}
         {0 0}
         {{a osw
-	  {{x44854000 1}}	 osf
-	  {{x44854000 0}}}
-	 {=cm_perspective.Center.x x44668000}
-	 {=cm_perspective.Center.y x44340000}}
+       {{x44854000 1}}	 osf
+       {{x44854000 0}}}
+	 {=Perspective.Center.x x44668000}
+	 {=Perspective.Center.y x44340000}}
         {0 0}}}     idem}
      {tx x44854000 x44104000 x43b40000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x44854000 ltm x44854000 tt x41200000}}
@@ -623,29 +627,55 @@ Gizmo {
         {{{0 -}}
 	 {{0 -}}}
         {{a osw
-	  {{x447a4000 1 -}
-	   {x44854000}}	 osf
-	  {{x447a4000 0 -}
-	   {x44854000}}}
-	 {=0
-	  {x41133340 x43533335}}
-	 {=0
-	  {x4194ccd0 xc2533340}}}
+       {{x447a4000 1 -}
+        {x44854000}}	 osf
+       {{x447a4000 0 -}
+        {x44854000}}}
+      {=0
+       {x41133340 x43533335}}
+      {=0
+       {x4194ccd0 xc2533340}}}
         {{{0 -}}
 	 {{0 -}}}
         {{{0 -}}
 	 {{0 -}}}
         {{a osw
-	  {{x447a4000 1 -}
-	   {x44854000}}	 osf
-	  {{x447a4000 0 -}
-	   {x44854000}}}
-	 {=cm_perspective.Center.x
-	  {x449d2002 x44c1d996}}
-	 {=cm_perspective.Center.y
-	  {x430e0008 x4439a47c}}}
+       {{x447a4000 1 -}
+        {x44854000}}	 osf
+       {{x447a4000 0 -}
+        {x44854000}}}
+      {=Perspective.Center.x
+       {x449d2002 x44c1d996}}
+      {=Perspective.Center.y
+       {x430e0008 x4439a47c}}}
         {{{0 -}}
-	 {{0 -}}}}}     idem}
+	 {{0 -}}}}}
+      {cc
+       {f 1056800}
+       {px
+        {x447a4000 x44854000}
+        {{0}
+	 {0}}
+        {{a osw
+	  {{x447a4000 1}
+	   {x44854000}}	 osf
+	  {{x447a4000 0}
+	   {x44854000}}}
+	 {0}
+	 {0}}
+        {{0}
+	 {0}}
+        {{0}
+	 {0}}
+        {{a osw
+	  {{x447a4000 1}
+	   {x44854000}}	 osf
+	  {{x447a4000 0}
+	   {x44854000}}}
+	 {0}
+	 {0}}
+        {{0}
+	 {0}}}}}
      {tx x447a4000 x43ef0000 x43c80000}
      {a osbe 0 osee 0 osw 1 osf 0 str 1 ltn x447a4000 ltm x447a4000 tt x41200000}}}}}}
   toolbox {selectAll {
@@ -694,11 +724,11 @@ Gizmo {
   note_font "Verdana Bold"
   note_font_size 21
   xpos -97
-  ypos -297
+  ypos -299
   postage_stamp true
  }
  Grade {
-  multiply {0 0.5 5 1}
+  multiply {0 0.1 5 1}
   name Grade1
   xpos -97
   ypos -176
@@ -710,18 +740,26 @@ Gizmo {
   ypos -110
   disable {{parent.HorizonCheckBox}}
  }
-set N3fd33000 [stack 0]
+ Crop {
+  box {0 0 4096 3112}
+  crop false
+  name Crop1
+  xpos -97
+  ypos -73
+  disable {{parent.boolean-1}}
+ }
+set N48468400 [stack 0]
+ Output {
+  name Output1
+  xpos -97
+  ypos -27
+ }
+push $N48468400
  Viewer {
   frame 1064
   frame_range 1001-1100
   name Viewer1
   xpos 89
   ypos 56
- }
-push $N3fd33000
- Output {
-  name Output1
-  xpos -97
-  ypos -7
  }
 end_group

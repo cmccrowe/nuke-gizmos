@@ -1,6 +1,4 @@
-#! C:/Program Files/Nuke12.1v2/nuke-12.1.2.dll -nx
-version 12.1 v2
-Gizmo {
+Group {
  inputs 2
  addUserKnob {20 batchOnlyTab l BatchOnly}
  addUserKnob {26 Description l "" +STARTLINE T "This node uses the \$gui expression to bypass process heavy node until render time.\n\n\n\n\n\n"}

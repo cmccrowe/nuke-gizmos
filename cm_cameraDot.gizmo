@@ -1,0 +1,16 @@
+Dot {
+ name cm_cameraDot1
+ note_font "Verdana Bold"
+ note_font_size 21
+ note_font_color 0x8c8c8cff
+ selected true
+ xpos 520
+ ypos -454
+ hide_input true
+ addUserKnob {20 controls l Controls}
+ addUserKnob {4 cameraList l "connect camera" M {---------------------------}}
+ addUserKnob {22 reloadCams l "Reload Camera List" -STARTLINE T "def getCameras():\n    with nuke.root():\n        myCameras = \[]\n    \n        ##For loop to grab all nodes in the class\n        for i in nuke.allNodes():\n            if i.Class() == \"Camera\" or i.Class() == \"Camera2\":\n                myCameras.append(i.knob('name').getValue())\n                \n        myCameras.sort()\n        return myCameras\n\n\nj = nuke.thisNode()\nk = j\['cameraList']\ncurrent = j\['cameraList'].value()\nwith nuke.root():\n    k.setValues(getCameras())\nj\['cameraList'].setValue(current)"}
+ addUserKnob {22 connect l Connect -STARTLINE T "p = nuke.thisNode()\ncam = nuke.toNode(p\['cameraList'].value())\np.setInput(0, cam)\np\['label'].setValue(cam\['name'].value())\n"}
+ addUserKnob {26 ""}
+ addUserKnob {26 cm l "" +STARTLINE T "cm_cameraDot v1.0 - (c) 2022 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#69a1fa;\">www.chrismccrowe.com</a>"}
+}

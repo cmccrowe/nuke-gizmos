@@ -1,5 +1,5 @@
 Dot {
- name cm_cameraDot1
+ name cm_cameraDot
  note_font "Verdana Bold"
  note_font_size 21
  note_font_color 0x8c8c8cff

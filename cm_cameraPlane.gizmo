@@ -1,4 +1,5 @@
 Group {
+ name cm_cameraPlane
  inputs 2
  tile_color 0xb20000ff
  label "Ref Frame:\[value ref_frame]\nDistance:\[value plane_distance]\nType:\[value transform]"

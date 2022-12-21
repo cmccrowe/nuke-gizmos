@@ -4,8 +4,8 @@ Dot {
  note_font_size 21
  note_font_color 0x5b5b5bff
  selected true
- xpos 175
- ypos -304
+ xpos -95
+ ypos -457
  hide_input true
  addUserKnob {20 controls l cameraDot}
  addUserKnob {4 cameraList l "connect camera" M {-----------------------------------}}

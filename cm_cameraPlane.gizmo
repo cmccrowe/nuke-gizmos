@@ -3,11 +3,11 @@ Group {
  tile_color 0xb20000ff
  label "Ref Frame:\[value ref_frame]\nDistance:\[value plane_distance]\nType:\[value transform]"
  selected true
- xpos 91
- ypos -100
+ xpos 299
+ ypos 82
  addUserKnob {20 CameraPlane l cameraPlane t "Settings for CameraPlane"}
- addUserKnob {4 cameraList l "connect camera" M {----------------------------------- ""}}
- addUserKnob {22 reloadCams l "Reload Camera List" -STARTLINE T "def getCameras():\n    with nuke.root():\n        myCameras = \[]\n    \n        ##For loop to grab all nodes in the class\n        for i in nuke.allNodes():\n            if i.Class() == \"Camera\" or i.Class() == \"Camera2\" or i.Class() == \"Camera3\":\n                myCameras.append(i.knob('name').getValue())\n        \n        if myCameras == \[]:\n            resetCameras()\n        else:                \n            myCameras.sort()\n            return myCameras\n\n\n\n\ndef resetCameras():\n    n.setInput(1, None)\n    if myCameras == \[]:\n        nuke.message(\"Bring in a camera\")   \n    return\n\n\n\nmyCameras = \[]\nn = nuke.thisNode()\nk = n\['cameraList']\ncurrent = k.value()\n\n\nif getCameras() == None:\n    n\['cameraList'].setValues(\['-----------------------------------'])\nelse:\n    with nuke.root():\n        k.setValues(getCameras())\n    k.setValue(current)"}
+ addUserKnob {4 cameraList l "connect camera" M {----------------------------------- "Load a Camera"}}
+ addUserKnob {22 reloadCams l "Reload Camera List" -STARTLINE T "def getCameras():\n    with nuke.root():\n        myCameras = \[]\n    \n        ##For loop to grab all nodes in the class\n        for i in nuke.allNodes():\n            if i.Class() == \"Camera\" or i.Class() == \"Camera2\":\n                myCameras.append(i.knob('name').getValue())\n        \n        if myCameras == \[]:\n            resetCameras()\n        else:                \n            myCameras.sort()\n            return myCameras\n\n\n\n\n\ndef resetCameras():\n    n.setInput(1, None)\n    if myCameras == \[]:\n        nuke.message(\"Bring in a Camera\")   \n    return\n\n\n\n\nmyCameras = \[]\nn = nuke.thisNode()\nk = n\['cameraList']\ncurrent = k.value()\n\n\n\nif getCameras() == None:\n    n\['cameraList'].setValues(\['-----------------------------------','Load a Camera'])\nelse:\n    with nuke.root():\n        k.setValues(getCameras())\n    k.setValue(current)"}
  addUserKnob {22 connect l Connect -STARTLINE T "n = nuke.thisNode()\nk = n\['cameraList']\nif k.value() != '-----------------------------------':\n    cam = nuke.toNode(n\['cameraList'].value())\n    n.setInput(1, cam)\nelse:\n    nuke.message(\"Hit Reload\")"}
  addUserKnob {41 format l "output format" T Reformat1.format}
  addUserKnob {4 transform M {Match-Move Stabilize "" "" "" "" "" "" "" ""}}
@@ -37,7 +37,7 @@ Group {
   xpos -526
   ypos 6
  }
-set N79ab0400 [stack 0]
+set N1aa95000 [stack 0]
  Camera2 {
   inputs 0
   translate {{"\[topnode parent.input1].translate.x(parent.ref_frame)"} {"\[topnode parent.input1].translate.y(parent.ref_frame)"} {"\[topnode parent.input1].translate.z(parent.ref_frame)"}}
@@ -93,7 +93,7 @@ set N79ab0400 [stack 0]
   xpos -261
   ypos 129
  }
-set N79a43000 [stack 0]
+set N19a9bc00 [stack 0]
  Group {
   name Overscan_Crop
   tile_color 0xbe81caff
@@ -141,7 +141,7 @@ set N79a43000 [stack 0]
   xpos -106
   ypos 128
  }
-push $N79ab0400
+push $N1aa95000
  Axis2 {
   translate {0 0 {-plane_distance}}
   uniform_scale {{plane_distance}}
@@ -150,7 +150,7 @@ push $N79ab0400
   xpos -416
   ypos -12
  }
-push $N79a43000
+push $N19a9bc00
  Viewer {
   frame_range 1100-1100
   colour_sample_bbox {-1.595185995 -0.6187089682 -1.594091892 -0.6181619167}

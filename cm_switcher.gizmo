@@ -3,9 +3,10 @@ Group {
  name Switcher
  tile_color 0xeb403400
  label Off
+ note_font "Bitstream Vera Sans Bold"
  selected true
- xpos 767
- ypos -510
+ xpos -683
+ ypos -12
  addUserKnob {20 controls l Controls}
  addUserKnob {26 text l "" +STARTLINE T "Pick State:"}
  addUserKnob {26 text_1 l "" +STARTLINE}

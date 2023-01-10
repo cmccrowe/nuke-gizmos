@@ -1,13 +1,14 @@
 Switch {
+ which 1
  name Switch
- tile_color 0xff0000ff
+ tile_color 0x34eb6e00
  label "\[value which]\n"
  note_font "DejaVu Sans Bold"
  selected true
- xpos 307
- ypos -482
+ xpos -135
+ ypos -363
  addUserKnob {20 CM}
  addUserKnob {3 changeColor l INVISIBLE +INVISIBLE}
- changeColor {{"\[if \{\[value disable]==true\} \{\nknob tile_color 0x4c0d00ff\nbrake\}]\n\n\[if \{\[value which]<1\} then \{\n   knob tile_color 0xff0000ff\n\} elseif \{\[value which]==1\} \{\n   knob tile_color 0xff00ff\n\} elseif \{\[value which]==2\} \{\n   knob tile_color 0x3464eb00\n\} elseif \{\[value which]==3\} \{\n   knob tile_color 0xc88b31ff\n\} elseif \{\[value which]==4\} \{\n   knob tile_color 0x31c8baff\n\} else \{\n   knob tile_color 0xeb71f6ff\}]\n\n\[value this.which]\n\n\n"}}
+ changeColor {{"\[if \{\[value disable]==true\} \{\nknob tile_color 0x4c0d00ff\nbrake\}]\n\n\[if \{\[value which]<1\} then \{\n   knob tile_color 0xff0000ff\n\} elseif \{\[value which]==1\} \{\n   knob tile_color 0x34eb6e00\n\} elseif \{\[value which]==2\} \{\n   knob tile_color 0x3464eb00\n\} elseif \{\[value which]==3\} \{\n   knob tile_color 0xc88b31ff\n\} elseif \{\[value which]==4\} \{\n   knob tile_color 0x31c8baff\n\} else \{\n   knob tile_color 0xeb71f6ff\}]\n\n\[value this.which]\n\n\n"}}
  addUserKnob {26 info l "" +STARTLINE T "disable = dark red\n\n0 = red\n1 = green\n2 = blue\n"}
 }

@@ -1,18 +1,17 @@
 Group {
  inputs 0
  name Switcher
- tile_color 0xeb403400
- label Off
- note_font "Bitstream Vera Sans Bold"
+ tile_color 0x34eb6e00
+ label On
  selected true
- xpos -683
- ypos -12
+ xpos 336
+ ypos -501
  addUserKnob {20 controls l Controls}
  addUserKnob {26 text l "" +STARTLINE T "Pick State:"}
  addUserKnob {26 text_1 l "" +STARTLINE}
- addUserKnob {22 offBtn l Off T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Off\")\nc.setValue(hex_color_to_int(\"eb4034\"))\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i.Class() == \"Switch\":\n            i.knob('which').setValue(0)\n\n" +STARTLINE}
- addUserKnob {22 onBtn l On -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"On\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i.Class() == \"Switch\":\n            i.knob('which').setValue(1)"}
- addUserKnob {22 otherBtn l Other -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Other\")\nc.setValue(hex_color_to_int(\"3464eb\"))\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i.Class() == \"Switch\":\n            i.knob('which').setValue(2)"}
+ addUserKnob {22 offBtn l Off T "\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Off\")\nc.setValue(hex_color_to_int(\"eb4034\"))\n\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(0)\n\n" +STARTLINE}
+ addUserKnob {22 onBtn l On -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"On\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(1)"}
+ addUserKnob {22 otherBtn l Other -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Alt\")\nc.setValue(hex_color_to_int(\"3464eb\"))\n\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(2)"}
  addUserKnob {26 ""}
  addUserKnob {26 me l "" +STARTLINE T "Switcher v1.0 - (c) 2022 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#69a1fa;\">www.chrismccrowe.com</a>"}
 }
@@ -24,7 +23,6 @@ Group {
  }
  Output {
   name Output1
-  selected true
   xpos 825
   ypos -479
  }

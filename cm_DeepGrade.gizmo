@@ -1,0 +1,128 @@
+Group {
+ inputs 2
+ tile_color 0xf0f56ff
+ addUserKnob {20 User l DeepGrade}
+ addUserKnob {41 channels T Grade1.channels}
+ addUserKnob {41 blackpoint T Grade1.blackpoint}
+ addUserKnob {41 whitepoint T Grade1.whitepoint}
+ addUserKnob {41 black l lift T Grade1.black}
+ addUserKnob {41 white l gain T Grade1.white}
+ addUserKnob {41 multiply T Grade1.multiply}
+ addUserKnob {41 add l offset T Grade1.add}
+ addUserKnob {41 gamma T Grade1.gamma}
+ addUserKnob {41 reverse T Grade1.reverse}
+ addUserKnob {41 black_clamp l "black clamp" -STARTLINE T Grade1.black_clamp}
+ addUserKnob {41 white_clamp l "white clamp" -STARTLINE T Grade1.white_clamp}
+ addUserKnob {41 maskChannelInput l mask T Grade1.maskChannelInput}
+ addUserKnob {41 inject -STARTLINE T Grade1.inject}
+ addUserKnob {41 invert_mask l invert -STARTLINE T Grade1.invert_mask}
+ addUserKnob {41 fringe -STARTLINE T Grade1.fringe}
+ addUserKnob {41 unpremult l "(un)premult by" T Grade1.unpremult}
+ addUserKnob {41 invert_unpremult l invert -STARTLINE T Grade1.invert_unpremult}
+ addUserKnob {41 enable_mix_luminance l "" +STARTLINE T Grade1.enable_mix_luminance}
+ addUserKnob {41 mix_luminance l "mix luminance" -STARTLINE T Grade1.mix_luminance}
+ addUserKnob {41 mix T Grade1.mix}
+ addUserKnob {26 ""}
+ addUserKnob {6 premult +STARTLINE}
+ premult true
+ addUserKnob {26 ""}
+ addUserKnob {26 about l "" +STARTLINE T "Copyright © 2020 Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:rgba(0,150,255);\">www.chrismccrowe.com</a>"}
+}
+ Input {
+  inputs 0
+  name mask
+  xpos 277
+  ypos -298
+  number 1
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 62
+  ypos -437
+ }
+ Dot {
+  name Dot2
+  xpos 90
+  ypos -392
+ }
+set Nbfac1c00 [stack 0]
+ DeepToImage2 {
+  name DeepToImage1
+  xpos 62
+  ypos -362
+ }
+ Unpremult {
+  channels all
+  name Unpremult1
+  xpos 62
+  ypos -336
+  disable {{parent.premult==0?1:0}}
+ }
+ Grade {
+  inputs 1+1
+  name Grade1
+  xpos 62
+  ypos -298
+ }
+ Premult {
+  channels all
+  name Premult1
+  xpos 62
+  ypos -272
+  disable {{parent.premult==0?1:0}}
+ }
+push $Nbfac1c00
+ Dot {
+  name Dot1
+  xpos -20
+  ypos -392
+ }
+ Dot {
+  name Dot5
+  xpos -20
+  ypos -236
+ }
+ DeepRecolor {
+  inputs 2
+  targetInputAlpha true
+  name DeepRecolor1
+  xpos 62
+  ypos -234
+ }
+ Output {
+  name Output1
+  xpos 62
+  ypos -195
+ }
+ Group {
+  inputs 0
+  name Invert_Checkbox
+  xpos 309
+  ypos -435
+  addUserKnob {20 User}
+  addUserKnob {7 myvalue R -1 1}
+  myvalue 4
+  addUserKnob {6 mycheck +STARTLINE}
+  mycheck true
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos -377
+   ypos 244
+  }
+  Multiply {
+   value {{parent.mycheck==1?-1*parent.myvalue:parent.myvalue}}
+   name Multiply5
+   selected true
+   xpos -377
+   ypos 311
+  }
+  Output {
+   name Output1
+   xpos -377
+   ypos 384
+  }
+ end_group
+end_group

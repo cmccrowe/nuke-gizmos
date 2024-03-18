@@ -8,18 +8,17 @@ Group {
  addUserKnob {3 deep_front l front}
  deep_front 7400
  addUserKnob {3 deep_back l back -STARTLINE}
- deep_back 10000
+ deep_back 9000
  addUserKnob {3 int_samples l samples}
- int_samples 10
+ int_samples 20
  addUserKnob {26 ""}
  addUserKnob {6 createRGB l "create rgb" +STARTLINE}
  createRGB true
  addUserKnob {18 color_rgb l color}
- color_rgb 1
+ color_rgb {0.296434015 0.03916000575 0.3560000062}
  addUserKnob {6 color_rgb_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
- addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 ""}
  addUserKnob {26 me l "" +STARTLINE T "DeepConstant v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
- addUserKnob {6 color_rgba_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
  addUserKnob {6 color_rgba_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
 }
  Constant {
@@ -44,27 +43,26 @@ Group {
  }
  DeepFromFrames {
   samples {{parent.int_samples}}
-  range_last 1
+  range_first {{frame}}
+  range_last {{frame}}
   alpha_mode additive
   zmin {{parent.deep_front}}
   zmax {{parent.deep_back}}
   name DeepFromFrames1
-  selected true
   xpos 70
   ypos -1052
  }
-set N3dddf400 [stack 0]
+set Na984ac00 [stack 0]
  Output {
   name Output1
   xpos 70
   ypos -953
  }
-push $N3dddf400
+push $Na984ac00
  Viewer {
   frame_range 1001-1100
   colour_sample_bbox {-0.4354166687 -0.03281249851 -0.4348958433 -0.03229166567}
   monitorOutNDISenderName "NukeX - DeepConstant_v01 - Viewer1"
-  monitorOutOutputTransform rec709
   name Viewer1
   xpos 486
   ypos -1057

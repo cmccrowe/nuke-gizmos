@@ -1,0 +1,72 @@
+Group {
+ inputs 0
+ tile_color 0xffff
+ addUserKnob {20 Settings}
+ addUserKnob {41 format T Constant1.format}
+ addUserKnob {7 add_overscan l overscan R 0 500}
+ addUserKnob {26 range l "Depth Range"}
+ addUserKnob {3 deep_front l front}
+ deep_front 7400
+ addUserKnob {3 deep_back l back -STARTLINE}
+ deep_back 10000
+ addUserKnob {3 int_samples l samples}
+ int_samples 10
+ addUserKnob {26 ""}
+ addUserKnob {6 createRGB l "create rgb" +STARTLINE}
+ createRGB true
+ addUserKnob {18 color_rgb l color}
+ color_rgb 1
+ addUserKnob {6 color_rgb_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 me l "" +STARTLINE T "DeepConstant v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
+ addUserKnob {6 color_rgba_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+ addUserKnob {6 color_rgba_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+}
+ Constant {
+  inputs 0
+  color {{parent.color_rgb.r} {parent.color_rgb.g} {parent.color_rgb.b} 6}
+  name Constant1
+  xpos 70
+  ypos -1346
+ }
+ Remove {
+  channels rgb
+  name Remove1
+  xpos 70
+  ypos -1180
+  disable {{parent.createRGB}}
+ }
+ AdjBBox {
+  numpixels {{parent.add_overscan}}
+  name AdjBBox1
+  xpos 70
+  ypos -1124
+ }
+ DeepFromFrames {
+  samples {{parent.int_samples}}
+  range_last 1
+  alpha_mode additive
+  zmin {{parent.deep_front}}
+  zmax {{parent.deep_back}}
+  name DeepFromFrames1
+  selected true
+  xpos 70
+  ypos -1052
+ }
+set N3dddf400 [stack 0]
+ Output {
+  name Output1
+  xpos 70
+  ypos -953
+ }
+push $N3dddf400
+ Viewer {
+  frame_range 1001-1100
+  colour_sample_bbox {-0.4354166687 -0.03281249851 -0.4348958433 -0.03229166567}
+  monitorOutNDISenderName "NukeX - DeepConstant_v01 - Viewer1"
+  monitorOutOutputTransform rec709
+  name Viewer1
+  xpos 486
+  ypos -1057
+ }
+end_group

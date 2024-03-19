@@ -1,0 +1,47 @@
+Group {
+ tile_color 0xffff
+ addUserKnob {20 settingsTeb l Settings}
+ addUserKnob {7 deep_front l front R 1 10000}
+ deep_front 100
+ addUserKnob {7 deep_back l back -STARTLINE R 1 10000}
+ deep_back 500
+ addUserKnob {3 int_Samples l "number of samples"}
+ int_Samples 10
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 me l "" +STARTLINE T "MakeDeep v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 706
+  ypos -487
+ }
+ DeepFromFrames {
+  samples {{parent.int_Samples}}
+  range_first {{frame}}
+  range_last {{frame}}
+  alpha_mode additive
+  zmin {{parent.deep_front}}
+  zmax {{parent.deep_back}}
+  name DeepFromFrames1
+  selected true
+  xpos 706
+  ypos -375
+ }
+set N74a67800 [stack 0]
+ Viewer {
+  frame 4
+  frame_range 1-1224
+  monitorOutNDISenderName "NukeX - DeepExtrude_v01 - Viewer1"
+  monitorOutOutputTransform rec709
+  name Viewer1
+  xpos 334
+  ypos -292
+ }
+push $N74a67800
+ Output {
+  name Output1
+  xpos 706
+  ypos -254
+ }
+end_group

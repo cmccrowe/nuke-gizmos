@@ -5,11 +5,11 @@ Group {
  addUserKnob {41 format T Constant2.format}
  addUserKnob {26 range l "Depth Range"}
  addUserKnob {3 int_deep_Front l "deep front"}
- int_deep_Front 7600
+ int_deep_Front 1000
  addUserKnob {3 int_deep_back l "deep back" -STARTLINE}
- int_deep_back 7900
+ int_deep_back 7000
  addUserKnob {3 int_samples l samples}
- int_samples 20
+ int_samples 10
  addUserKnob {26 ""}
  addUserKnob {26 me l "" +STARTLINE T "Deep2DNoise v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
  addUserKnob {20 noiseTab l Noise}
@@ -44,27 +44,31 @@ Group {
  addUserKnob {41 center T Noise1.center}
  addUserKnob {41 xrotate T Noise1.xrotate}
  addUserKnob {41 yrotate T Noise1.yrotate}
+ addUserKnob {20 "" l Color}
+ addUserKnob {41 ramp T Noise1.ramp}
+ addUserKnob {41 color T Noise1.color}
+ addUserKnob {41 p1 l "point 1" T Noise1.p1}
+ addUserKnob {41 color0 l "color 0" T Noise1.color0}
+ addUserKnob {41 p0 l "point 0" T Noise1.p0}
 }
  Constant {
   inputs 0
   channels rgb
   name Constant2
-  selected true
   xpos 832
   ypos -306
  }
  Noise {
+  octaves 5
   gamma 0.85
   center {1920 1080}
   name Noise1
-  selected true
   xpos 832
   ypos -124
  }
-set Na4dee400 [stack 0]
+set N3ceb800 [stack 0]
  AdjBBox {
   name AdjBBox1
-  selected true
   xpos 832
   ypos -71
  }
@@ -76,16 +80,14 @@ set Na4dee400 [stack 0]
   zmin {{parent.int_deep_Front}}
   zmax {{parent.int_deep_back}}
   name DeepFromFrames1
-  selected true
   xpos 832
   ypos -17
  }
  Group {
   name DeepGrade
   tile_color 0xf0f56ff
-  selected true
   xpos 832
-  ypos 52
+  ypos 50
   addUserKnob {20 User l DeepGrade}
   addUserKnob {41 channels T Grade1.channels}
   addUserKnob {41 blackpoint T Grade1.blackpoint}
@@ -116,8 +118,8 @@ set Na4dee400 [stack 0]
   Input {
    inputs 0
    name mask
-   xpos 236
-   ypos -295
+   xpos 200
+   ypos -298
    number 1
   }
   Input {
@@ -131,7 +133,7 @@ set Na4dee400 [stack 0]
    xpos 90
    ypos -392
   }
-set Na4def800 [stack 0]
+set N3d20c00 [stack 0]
   DeepToImage2 {
    name DeepToImage1
    xpos 62
@@ -140,6 +142,7 @@ set Na4def800 [stack 0]
   Unpremult {
    channels all
    name Unpremult1
+   selected true
    xpos 62
    ypos -336
    disable {{parent.premult==0?1:0}}
@@ -159,7 +162,7 @@ set Na4def800 [stack 0]
    ypos -272
    disable {{parent.premult==0?1:0}}
   }
-push $Na4def800
+push $N3d20c00
   Dot {
    name Dot1
    xpos -20
@@ -185,8 +188,8 @@ push $Na4def800
   Group {
    inputs 0
    name Invert_Checkbox
-   xpos 320
-   ypos -439
+   xpos 309
+   ypos -435
    addUserKnob {20 User}
    addUserKnob {7 myvalue R -1 1}
    myvalue 4
@@ -215,14 +218,12 @@ push $Na4def800
  end_group
  Dot {
   name Dot3
-  selected true
   xpos 860
   ypos 114
  }
-set Na821c800 [stack 0]
+set N3d51c00 [stack 0]
  DeepToImage2 {
   name DeepToImage1
-  selected true
   xpos 1011
   ypos 152
  }
@@ -233,7 +234,6 @@ set Na821c800 [stack 0]
   channel3 alpha
   expr3 "isinf(a) ? inf.a : isnan(a) ? nan.a : a"
   name FixPixels
-  selected true
   xpos 1011
   ypos 203
   addUserKnob {20 User}
@@ -246,28 +246,24 @@ set Na821c800 [stack 0]
   addUserKnob {6 nan_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
   addUserKnob {6 nan_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
  }
-push $Na821c800
+push $N3d51c00
  DeepRecolor {
   inputs 2
   name DeepRecolor1
-  selected true
   xpos 832
-  ypos 259
+  ypos 253
  }
  Output {
   name Output1
-  selected true
   xpos 832
   ypos 419
  }
-push $Na4dee400
+push $N3ceb800
  Viewer {
-  frame 1
   frame_range 1001-1100
   monitorOutNDISenderName "NukeX - Deep2DNoise_v01 - Viewer1"
-  monitorOutOutputTransform rec709
   name Viewer1
-  xpos 1555
-  ypos -98
+  xpos 1357
+  ypos -108
  }
 end_group

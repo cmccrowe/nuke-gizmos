@@ -1,0 +1,735 @@
+Group {
+ knobChanged stretch_script.stretch_func()
+ tile_color 0xc572f9ff
+ addUserKnob {20 controls l Controls}
+ addUserKnob {4 stretch_direction l "Stretch Direction" M {"From Top" "From Left" "From Right" "From Bottom" "" "" ""}}
+ addUserKnob {26 ""}
+ addUserKnob {20 top_group l "Stretch Top:" n 1}
+ addUserKnob {12 top_from l From:}
+ top_from {1112 1080}
+ addUserKnob {12 top_to l To: -STARTLINE}
+ top_to {1112 2160}
+ addUserKnob {3 top_amount l Amount:}
+ top_amount 100
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {20 left_group l "Stretch Left:" +HIDDEN n 1}
+ addUserKnob {12 left_from l From:}
+ left_from {1112 1080}
+ addUserKnob {12 left_to l To: -STARTLINE}
+ left_to {0 1080}
+ addUserKnob {3 left_amount l Amount:}
+ left_amount 100
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {20 right_group l "Stretch Right:" +HIDDEN n 1}
+ addUserKnob {12 from_right l From:}
+ from_right {1112 1080}
+ addUserKnob {12 to_right l To: -STARTLINE}
+ to_right {2160 1112}
+ addUserKnob {3 right_amount l Amount:}
+ right_amount 100
+ addUserKnob {20 endGroup_2 l endGroup n -1}
+ addUserKnob {20 bottom_group l "Stretch Bottom:" +HIDDEN n 1}
+ addUserKnob {12 from_bottom l From:}
+ from_bottom {1112 1080}
+ addUserKnob {12 to_bottom l To: -STARTLINE}
+ to_bottom {1112 0}
+ addUserKnob {3 bottom_amount l Amount:}
+ bottom_amount 100
+ addUserKnob {20 endGroup_3 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {26 text l "" +STARTLINE T "Smooth Stretch v1.0 - (c) 2022 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
+}
+ Ramp {
+  inputs 0
+  p0 {{parent.from_bottom} {parent.from_bottom}}
+  p1 {{parent.to_bottom} {parent.to_bottom}}
+  name Bottom_Ramp
+  xpos 344
+  ypos -1071
+ }
+ Input {
+  inputs 0
+  name Image
+  xpos -695
+  ypos -1496
+ }
+ Reformat {
+  pbb true
+  name Reformat1
+  xpos -695
+  ypos -1422
+ }
+ Dot {
+  name Dot2
+  xpos -667
+  ypos -1311
+ }
+set N29796c00 [stack 0]
+ Dot {
+  name Dot3
+  xpos -343
+  ypos -1311
+ }
+set N29797000 [stack 0]
+ Dot {
+  name Dot1
+  xpos -113
+  ypos -1311
+ }
+set N29797400 [stack 0]
+ Dot {
+  name Dot4
+  xpos 248
+  ypos -1311
+ }
+ Group {
+  inputs 2
+  name Bottom_CM_STMAP_WARP
+  tile_color 0xc96abfff
+  note_font Verdana
+  xpos 220
+  ypos -1071
+  addUserKnob {20 Setting_Tab l STMAP_Warp t Settings}
+  addUserKnob {26 text_1 l Transform}
+  addUserKnob {41 translate T Transform7.translate}
+  addUserKnob {41 rotate T Transform7.rotate}
+  addUserKnob {41 scale T Transform7.scale}
+  addUserKnob {41 skewX l "skew X" T Transform7.skewX}
+  addUserKnob {41 skewY l "skew Y" T Transform7.skewY}
+  addUserKnob {26 ""}
+  addUserKnob {41 size_1 l "Erode Size" T FilterErode1.size}
+  addUserKnob {26 blur_divider l "" +STARTLINE}
+  addUserKnob {41 size l "Blur Edges" T Blur64.size}
+  addUserKnob {26 ""}
+  addUserKnob {41 which l Mix t On/Off T Dissolve4.which}
+  addUserKnob {26 ""}
+  addUserKnob {26 Author_text l "" +STARTLINE T "STMAP_Warp v1.0 - (c) 2019 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
+ }
+  Input {
+   inputs 0
+   name Mask
+   xpos 437
+   ypos -246
+   number 1
+  }
+  AddChannels {
+   channels alpha
+   name AddChannels1
+   xpos 437
+   ypos -191
+  }
+  FilterErode {
+   channels alpha
+   size 0
+   name FilterErode1
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -151
+  }
+  Blur {
+   channels alpha
+   name Blur64
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -115
+  }
+  Input {
+   inputs 0
+   name Image
+   xpos 147
+   ypos -338
+  }
+  Dot {
+   name Dot217
+   note_font "Bitstream Vera Sans"
+   xpos 175
+   ypos -240
+  }
+set N2d46b000 [stack 0]
+  Dot {
+   name Dot1
+   xpos 303
+   ypos -240
+  }
+  Shuffle {
+   red black
+   green black
+   blue black
+   alpha black
+   name Shuffle1
+   label "Original 1-1 map"
+   xpos 275
+   ypos -166
+  }
+  Expression {
+   temp_name0 s
+   temp_expr0 width
+   temp_name1 t
+   temp_expr1 height
+   expr0 (x/s)
+   expr1 (y/t)
+   name Expression3
+   xpos 275
+   ypos -126
+  }
+  Expression {
+   temp_name0 s
+   temp_expr0 (1-g(width,height))/2
+   temp_name1 t
+   temp_expr1 "(1 - r(width, height))/2"
+   expr0 "r + t"
+   expr1 g+s
+   name Expression4
+   xpos 275
+   ypos -100
+  }
+  Shuffle {
+   alpha white
+   name Shuffle7
+   xpos 275
+   ypos -74
+  }
+set N2d4a0400 [stack 0]
+  TransformMasked {
+   inputs 1+1
+   translate {0 {parent.parent.bottom_amount*-1}}
+   center {1024 540}
+   shutteroffset centred
+   name Transform7
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -80
+  }
+push $N2d4a0400
+  Dissolve {
+   inputs 2
+   which 1
+   name Dissolve4
+   note_font "Bitstream Vera Sans"
+   xpos 275
+   ypos -48
+  }
+  Dot {
+   name Dot2
+   xpos 303
+   ypos 7
+  }
+push $N2d46b000
+  STMap {
+   inputs 2
+   uv rgb
+   name STMap1
+   note_font "Bitstream Vera Sans"
+   xpos 147
+   ypos 4
+  }
+  Output {
+   name Output1
+   xpos 147
+   ypos 104
+  }
+ end_group
+ Dot {
+  name Dot6
+  xpos 248
+  ypos -789
+ }
+ Ramp {
+  inputs 0
+  p0 {{parent.from_right} {parent.from_right}}
+  p1 {{parent.to_right} {parent.to_right}}
+  name Right_Ramp
+  xpos 3
+  ypos -1070
+ }
+push $N29797400
+ Group {
+  inputs 2
+  name Right_CM_STMAP_WARP
+  tile_color 0xc96abfff
+  note_font Verdana
+  xpos -141
+  ypos -1070
+  addUserKnob {20 Setting_Tab l STMAP_Warp t Settings}
+  addUserKnob {26 text_1 l Transform}
+  addUserKnob {41 translate T Transform7.translate}
+  addUserKnob {41 rotate T Transform7.rotate}
+  addUserKnob {41 scale T Transform7.scale}
+  addUserKnob {41 skewX l "skew X" T Transform7.skewX}
+  addUserKnob {41 skewY l "skew Y" T Transform7.skewY}
+  addUserKnob {26 ""}
+  addUserKnob {41 size_1 l "Erode Size" T FilterErode1.size}
+  addUserKnob {26 blur_divider l "" +STARTLINE}
+  addUserKnob {41 size l "Blur Edges" T Blur64.size}
+  addUserKnob {26 ""}
+  addUserKnob {41 which l Mix t On/Off T Dissolve4.which}
+  addUserKnob {26 ""}
+  addUserKnob {26 Author_text l "" +STARTLINE T "STMAP_Warp v1.0 - (c) 2019 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
+ }
+  Input {
+   inputs 0
+   name Mask
+   xpos 437
+   ypos -246
+   number 1
+  }
+  AddChannels {
+   channels alpha
+   name AddChannels1
+   xpos 437
+   ypos -191
+  }
+  FilterErode {
+   channels alpha
+   size 0
+   name FilterErode1
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -151
+  }
+  Blur {
+   channels alpha
+   name Blur64
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -115
+  }
+  Input {
+   inputs 0
+   name Image
+   xpos 147
+   ypos -338
+  }
+  Dot {
+   name Dot217
+   note_font "Bitstream Vera Sans"
+   xpos 175
+   ypos -240
+  }
+set N2d4cf800 [stack 0]
+  Dot {
+   name Dot1
+   xpos 303
+   ypos -240
+  }
+  Shuffle {
+   red black
+   green black
+   blue black
+   alpha black
+   name Shuffle1
+   label "Original 1-1 map"
+   xpos 275
+   ypos -166
+  }
+  Expression {
+   temp_name0 s
+   temp_expr0 width
+   temp_name1 t
+   temp_expr1 height
+   expr0 (x/s)
+   expr1 (y/t)
+   name Expression3
+   xpos 275
+   ypos -126
+  }
+  Expression {
+   temp_name0 s
+   temp_expr0 (1-g(width,height))/2
+   temp_name1 t
+   temp_expr1 "(1 - r(width, height))/2"
+   expr0 "r + t"
+   expr1 g+s
+   name Expression4
+   xpos 275
+   ypos -100
+  }
+  Shuffle {
+   alpha white
+   name Shuffle7
+   xpos 275
+   ypos -74
+  }
+set N2d500c00 [stack 0]
+  TransformMasked {
+   inputs 1+1
+   translate {{parent.parent.right_amount} 0}
+   center {1024 540}
+   shutteroffset centred
+   name Transform7
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -80
+  }
+push $N2d500c00
+  Dissolve {
+   inputs 2
+   which 1
+   name Dissolve4
+   note_font "Bitstream Vera Sans"
+   xpos 275
+   ypos -48
+  }
+  Dot {
+   name Dot2
+   xpos 303
+   ypos 7
+  }
+push $N2d4cf800
+  STMap {
+   inputs 2
+   uv rgb
+   name STMap1
+   note_font "Bitstream Vera Sans"
+   xpos 147
+   ypos 4
+  }
+  Output {
+   name Output1
+   xpos 147
+   ypos 104
+  }
+ end_group
+ Ramp {
+  inputs 0
+  p0 {{parent.left_from} {root.format.t/2}}
+  p1 {{parent.left_to} {root.format.t/2}}
+  name Left_Ramp
+  xpos -511
+  ypos -1073
+ }
+push $N29797000
+ Group {
+  inputs 2
+  name Left_CM_STMAP_WARP
+  tile_color 0xc96abfff
+  note_font Verdana
+  xpos -371
+  ypos -1073
+  addUserKnob {20 Setting_Tab l STMAP_Warp t Settings}
+  addUserKnob {26 text_1 l Transform}
+  addUserKnob {41 translate T Transform7.translate}
+  addUserKnob {41 rotate T Transform7.rotate}
+  addUserKnob {41 scale T Transform7.scale}
+  addUserKnob {41 skewX l "skew X" T Transform7.skewX}
+  addUserKnob {41 skewY l "skew Y" T Transform7.skewY}
+  addUserKnob {26 ""}
+  addUserKnob {41 size_1 l "Erode Size" T FilterErode1.size}
+  addUserKnob {26 blur_divider l "" +STARTLINE}
+  addUserKnob {41 size l "Blur Edges" T Blur64.size}
+  addUserKnob {26 ""}
+  addUserKnob {41 which l Mix t On/Off T Dissolve4.which}
+  addUserKnob {26 ""}
+  addUserKnob {26 Author_text l "" +STARTLINE T "STMAP_Warp v1.0 - (c) 2019 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
+ }
+  Input {
+   inputs 0
+   name Mask
+   xpos 437
+   ypos -246
+   number 1
+  }
+  AddChannels {
+   channels alpha
+   name AddChannels1
+   xpos 437
+   ypos -191
+  }
+  FilterErode {
+   channels alpha
+   size 0
+   name FilterErode1
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -151
+  }
+  Blur {
+   channels alpha
+   name Blur64
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -115
+  }
+  Input {
+   inputs 0
+   name Image
+   xpos 147
+   ypos -338
+  }
+  Dot {
+   name Dot217
+   note_font "Bitstream Vera Sans"
+   xpos 175
+   ypos -240
+  }
+set N2d53dc00 [stack 0]
+  Dot {
+   name Dot1
+   xpos 303
+   ypos -240
+  }
+  Shuffle {
+   red black
+   green black
+   blue black
+   alpha black
+   name Shuffle1
+   label "Original 1-1 map"
+   xpos 275
+   ypos -166
+  }
+  Expression {
+   temp_name0 s
+   temp_expr0 width
+   temp_name1 t
+   temp_expr1 height
+   expr0 (x/s)
+   expr1 (y/t)
+   name Expression3
+   xpos 275
+   ypos -126
+  }
+  Expression {
+   temp_name0 s
+   temp_expr0 (1-g(width,height))/2
+   temp_name1 t
+   temp_expr1 "(1 - r(width, height))/2"
+   expr0 "r + t"
+   expr1 g+s
+   name Expression4
+   xpos 275
+   ypos -100
+  }
+  Shuffle {
+   alpha white
+   name Shuffle7
+   xpos 275
+   ypos -74
+  }
+set N2d569000 [stack 0]
+  TransformMasked {
+   inputs 1+1
+   translate {{parent.parent.left_amount*-1} 0}
+   center {1024 540}
+   shutteroffset centred
+   name Transform7
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -80
+  }
+push $N2d569000
+  Dissolve {
+   inputs 2
+   which 1
+   name Dissolve4
+   note_font "Bitstream Vera Sans"
+   xpos 275
+   ypos -48
+  }
+  Dot {
+   name Dot2
+   xpos 303
+   ypos 7
+  }
+push $N2d53dc00
+  STMap {
+   inputs 2
+   uv rgb
+   name STMap1
+   note_font "Bitstream Vera Sans"
+   xpos 147
+   ypos 4
+  }
+  Output {
+   name Output1
+   xpos 147
+   ypos 104
+  }
+ end_group
+ Ramp {
+  inputs 0
+  p0 {{parent.top_from} {parent.top_from}}
+  p1 {{parent.top_to} {parent.top_to}}
+  name Top_Ramp
+  xpos -856
+  ypos -1079
+ }
+push $N29796c00
+ Group {
+  inputs 2
+  name TOP_CM_STMAP_WARP
+  tile_color 0xc96abfff
+  note_font Verdana
+  xpos -695
+  ypos -1079
+  addUserKnob {20 Setting_Tab l STMAP_Warp t Settings}
+  addUserKnob {26 text_1 l Transform}
+  addUserKnob {41 translate T Transform7.translate}
+  addUserKnob {41 rotate T Transform7.rotate}
+  addUserKnob {41 scale T Transform7.scale}
+  addUserKnob {41 skewX l "skew X" T Transform7.skewX}
+  addUserKnob {41 skewY l "skew Y" T Transform7.skewY}
+  addUserKnob {26 ""}
+  addUserKnob {41 size_1 l "Erode Size" T FilterErode1.size}
+  addUserKnob {26 blur_divider l "" +STARTLINE}
+  addUserKnob {41 size l "Blur Edges" T Blur64.size}
+  addUserKnob {26 ""}
+  addUserKnob {41 which l Mix t On/Off T Dissolve4.which}
+  addUserKnob {26 ""}
+  addUserKnob {26 Author_text l "" +STARTLINE T "STMAP_Warp v1.0 - (c) 2019 - Chris McCrowe - <a href=\"www.chrismccrowe.com\">www.chrismccrowe.com</a>"}
+ }
+  Input {
+   inputs 0
+   name Mask
+   xpos 437
+   ypos -246
+   number 1
+  }
+  AddChannels {
+   channels alpha
+   name AddChannels1
+   xpos 437
+   ypos -191
+  }
+  FilterErode {
+   channels alpha
+   size 0
+   name FilterErode1
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -151
+  }
+  Blur {
+   channels alpha
+   name Blur64
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -115
+  }
+  Input {
+   inputs 0
+   name Image
+   xpos 147
+   ypos -338
+  }
+  Dot {
+   name Dot217
+   note_font "Bitstream Vera Sans"
+   xpos 175
+   ypos -240
+  }
+set N2d5d4000 [stack 0]
+  Dot {
+   name Dot1
+   xpos 303
+   ypos -240
+  }
+  Shuffle {
+   red black
+   green black
+   blue black
+   alpha black
+   name Shuffle1
+   label "Original 1-1 map"
+   xpos 275
+   ypos -166
+  }
+  Expression {
+   temp_name0 s
+   temp_expr0 width
+   temp_name1 t
+   temp_expr1 height
+   expr0 (x/s)
+   expr1 (y/t)
+   name Expression3
+   xpos 275
+   ypos -126
+  }
+  Expression {
+   temp_name0 s
+   temp_expr0 (1-g(width,height))/2
+   temp_name1 t
+   temp_expr1 "(1 - r(width, height))/2"
+   expr0 "r + t"
+   expr1 g+s
+   name Expression4
+   xpos 275
+   ypos -100
+  }
+  Shuffle {
+   alpha white
+   name Shuffle7
+   xpos 275
+   ypos -74
+  }
+set N2d5d5400 [stack 0]
+  TransformMasked {
+   inputs 1+1
+   translate {0 {parent.parent.top_amount}}
+   center {1024 540}
+   shutteroffset centred
+   name Transform7
+   note_font "Bitstream Vera Sans"
+   xpos 437
+   ypos -77
+  }
+push $N2d5d5400
+  Dissolve {
+   inputs 2
+   which 1
+   name Dissolve4
+   note_font "Bitstream Vera Sans"
+   xpos 275
+   ypos -48
+  }
+  Dot {
+   name Dot2
+   xpos 303
+   ypos 7
+  }
+push $N2d5d4000
+  STMap {
+   inputs 2
+   uv rgb
+   name STMap1
+   note_font "Bitstream Vera Sans"
+   xpos 147
+   ypos 4
+  }
+  Output {
+   name Output1
+   xpos 147
+   ypos 104
+  }
+ end_group
+ Dot {
+  name Dot5
+  xpos -667
+  ypos -789
+ }
+ Switch {
+  inputs 4
+  which {{parent.stretch_direction}}
+  name Switch
+  tile_color 0xff0000ff
+  label "\[value stretch_direction]\n"
+  note_font "DejaVu Sans Bold"
+  xpos -251
+  ypos -793
+  addUserKnob {20 CM}
+  addUserKnob {3 changeColor l INVISIBLE +INVISIBLE}
+  changeColor {{"\[if \{\[value disable]==true\} \{\nknob tile_color 0x4c0d00ff\nbrake\}]\n\n\[if \{\[value which]<1\} then \{\nknob tile_color 0xff0000ff\n\} elseif \{\[value which]==1\} then \{\nknob tile_color 0xff00ff\n\} else \{\nknob tile_color 0xffff\}]\n\n\[value this.which]"}}
+  addUserKnob {26 info l "" +STARTLINE T "disable = dark red\n\n0 = red\n1 = green\n2 = blue\n"}
+ }
+ Output {
+  name Output1
+  xpos -251
+  ypos -529
+ }
+ Viewer {
+  frame_range 1001-1100
+  name Viewer1
+  xpos -251
+  ypos -409
+ }
+end_group

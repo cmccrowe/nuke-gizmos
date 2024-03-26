@@ -7,7 +7,7 @@ Group {
 }
  Input {
   inputs 0
-  name tar
+  name target
   xpos 124
   ypos -54
  }

@@ -1,0 +1,46 @@
+Group {
+ tile_color 0xffff
+ addUserKnob {20 settings l DeepAdjustBBox}
+ addUserKnob {7 size R 0 1000}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 me l "" +STARTLINE T "DeepAdjustBBox v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -323
+  ypos -129
+ }
+ Dot {
+  name Dot3
+  xpos -295
+  ypos -22
+ }
+set Nfd2e7800 [stack 0]
+ DeepToImage2 {
+  name DeepToImage1
+  xpos -60
+  ypos 45
+ }
+ AdjBBox {
+  numpixels {{parent.size}}
+  name AdjBBox1
+  xpos -60
+  ypos 86
+ }
+push $Nfd2e7800
+ DeepRecolor {
+  inputs 2
+  channels all
+  bbox union
+  targetInputAlpha true
+  name DeepRecolor1
+  xpos -323
+  ypos 135
+ }
+ Output {
+  name Output1
+  xpos -323
+  ypos 294
+ }
+end_group

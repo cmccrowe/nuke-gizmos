@@ -1,0 +1,35 @@
+Group {
+ inputs 2
+ tile_color 0xffff
+ addUserKnob {20 settings l DeepCopyBBox}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 me l "" +STARTLINE T "DeepCopyBBox v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
+}
+ Input {
+  inputs 0
+  name tar
+  xpos 124
+  ypos -54
+ }
+ DeepCrop {
+  use_znear false
+  use_zfar false
+  bbox {{src.bbox.x} {src.bbox.y} {src.bbox.r} {src.bbox.t}}
+  name DeepBbox
+  xpos 124
+  ypos 56
+ }
+ Output {
+  name Output1
+  xpos 124
+  ypos 159
+ }
+ Input {
+  inputs 0
+  name src
+  selected true
+  xpos -112
+  ypos -54
+  number 1
+ }
+end_group

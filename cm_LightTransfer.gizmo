@@ -1,0 +1,351 @@
+Gizmo {
+ inputs 3
+ tile_color 0xdfff8fff
+ note_font "Bitstream Vera Sans"
+ addUserKnob {20 settings l LightTransfer}
+ addUserKnob {7 brightness l "brightness multiply" R 0 100}
+ brightness 50
+ addUserKnob {7 softness R 0 3}
+ softness 1
+ addUserKnob {7 saturation R 0 2}
+ saturation 1
+ addUserKnob {6 enableColor l "enable Color" +STARTLINE}
+ addUserKnob {18 color_rgb l "" -STARTLINE}
+ color_rgb {1.4 1 1}
+ addUserKnob {6 color_rgb_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 ""}
+ addUserKnob {6 boolean l "copy bbox" +STARTLINE}
+ boolean true
+ addUserKnob {6 boolean_1 l "crop overscan" -STARTLINE}
+ boolean_1 true
+ addUserKnob {7 double l overscan R 0 500}
+ double 50
+ addUserKnob {26 ""}
+ addUserKnob {41 mix T Merge2.mix}
+ addUserKnob {26 ""}
+ addUserKnob {26 me l "" +STARTLINE T "LightTransfer v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
+}
+ Input {
+  inputs 0
+  name target
+  xpos -376
+  ypos -859
+  number 1
+ }
+ Dot {
+  name Dot18
+  note_font "Bitstream Vera Sans"
+  xpos -348
+  ypos -646
+ }
+set Na500e000 [stack 0]
+ Dot {
+  name Dot19
+  note_font "Bitstream Vera Sans"
+  xpos -35
+  ypos -646
+ }
+ Dot {
+  name Dot20
+  note_font "Bitstream Vera Sans"
+  xpos -35
+  ypos 88
+ }
+ Input {
+  inputs 0
+  name mask
+  xpos -209
+  ypos -128
+  number 2
+ }
+ Input {
+  inputs 0
+  name src
+  xpos -892
+  ypos -851
+ }
+set Na500f000 [stack 0]
+ Blur {
+  channels rgba
+  size {{parent.softness}}
+  name Blur
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -776
+ }
+ Blur {
+  channels rgba
+  size {{Blur.size*2}}
+  mix 0.765
+  name Blur1
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -750
+ }
+ Blur {
+  channels rgba
+  size {{Blur1.size*2}}
+  mix 0.8
+  name Blur2
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -724
+ }
+ Blur {
+  channels rgba
+  size {{Blur2.size*2}}
+  crop false
+  mix 0.7
+  name Blur3
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -698
+ }
+ Blur {
+  channels rgba
+  size {{Blur3.size*2}}
+  crop false
+  mix 0.6
+  name Blur4
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -672
+ }
+ Blur {
+  channels rgba
+  size {{Blur4.size*2}}
+  crop false
+  mix 0.5
+  name Blur5
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -646
+ }
+ Blur {
+  channels rgba
+  size {{Blur5.size*2}}
+  crop false
+  mix 0.4
+  name Blur6
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -620
+ }
+ Blur {
+  channels rgba
+  size {{Blur6.size*2}}
+  crop false
+  mix 0.3
+  name Blur7
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -594
+ }
+ Blur {
+  channels rgba
+  size {{Blur7.size*2}}
+  crop false
+  mix 0.2
+  name Blur8
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -568
+ }
+ Blur {
+  channels rgba
+  size {{Blur8.size*2}}
+  crop false
+  mix 0.1
+  name Blur9
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -542
+ }
+ Blur {
+  channels rgba
+  size {{Blur9.size*2}}
+  crop false
+  mix 0.05
+  name Blur10
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -516
+ }
+ Blur {
+  channels rgba
+  size {{Blur10.size*2}}
+  crop false
+  mix 0.025
+  name Blur11
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -490
+ }
+set Na507e000 [stack 0]
+ Group {
+  name cm_CropOverscan
+  tile_color 0xc641c9ff
+  note_font_color 0xf5f5f5ff
+  xpos -892
+  ypos -440
+  disable {{parent.cm_CropOverscan1.disable}}
+  addUserKnob {20 settings l CropOverscan}
+  addUserKnob {7 overscan_px l "Overscan (px)" R 0 100}
+  overscan_px {{parent.cm_CropOverscan1.overscan_px}}
+  addUserKnob {26 ""}
+  addUserKnob {41 softness T overscan_crop.softness}
+  addUserKnob {41 reformat T overscan_crop.reformat}
+  addUserKnob {41 intersect -STARTLINE T overscan_crop.intersect}
+  addUserKnob {41 crop l "black outside" -STARTLINE T overscan_crop.crop}
+  addUserKnob {26 ""}
+  addUserKnob {26 text l "" +STARTLINE T "Chris McCrowe"}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 0
+   ypos 2
+  }
+  Crop {
+   box {{0-parent.overscan_px} {0-parent.overscan_px} {"Input.width + parent.overscan_px"} {"Input.height + parent.overscan_px"}}
+   intersect true
+   name overscan_crop
+   selected true
+   xpos 0
+   ypos 141
+  }
+  Output {
+   name Output1
+   xpos 0
+   ypos 300
+  }
+ end_group
+ Multiply {
+  channels rgb
+  value {{parent.brightness}}
+  name Multiply
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -399
+ }
+ Saturation {
+  saturation {{parent.saturation}}
+  name Saturation1
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -350
+ }
+ Grade {
+  white {{parent.color_rgb} {parent.color_rgb} {parent.color_rgb} {parent.color_rgb}}
+  black_clamp false
+  name Grade3
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -306
+  disable {{!parent.enableColor}}
+ }
+ Remove {
+  operation keep
+  channels rgb
+  name Remove1
+  note_font "Bitstream Vera Sans"
+  xpos -892
+  ypos -261
+ }
+ Dot {
+  name Dot21
+  note_font "Bitstream Vera Sans"
+  xpos -864
+  ypos -198
+ }
+push $Na500e000
+ Dot {
+  name Dot1
+  note_font "Bitstream Vera Sans"
+  xpos -348
+  ypos -289
+ }
+set Na50b4400 [stack 0]
+ Merge2 {
+  inputs 2
+  operation multiply
+  Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge1
+  note_font "Bitstream Vera Sans"
+  xpos -548
+  ypos -196
+ }
+push $Na50b4400
+ Merge2 {
+  inputs 2+1
+  operation plus
+  Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge2
+  note_font "Bitstream Vera Sans"
+  xpos -376
+  ypos -128
+ }
+ Group {
+  name cm_CropOverscan1
+  tile_color 0xc641c9ff
+  note_font_color 0xf5f5f5ff
+  xpos -376
+  ypos -34
+  disable {{!parent.boolean_1}}
+  addUserKnob {20 settings l CropOverscan}
+  addUserKnob {7 overscan_px l "Overscan (px)" R 0 100}
+  overscan_px {{parent.double}}
+  addUserKnob {26 ""}
+  addUserKnob {41 softness T overscan_crop.softness}
+  addUserKnob {41 reformat T overscan_crop.reformat}
+  addUserKnob {41 intersect -STARTLINE T overscan_crop.intersect}
+  addUserKnob {41 crop l "black outside" -STARTLINE T overscan_crop.crop}
+  addUserKnob {26 ""}
+  addUserKnob {26 text l "" +STARTLINE T "Chris McCrowe"}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 0
+   ypos 2
+  }
+  Crop {
+   box {{0-parent.overscan_px} {0-parent.overscan_px} {"Input.width + parent.overscan_px"} {"Input.height + parent.overscan_px"}}
+   intersect true
+   name overscan_crop
+   selected true
+   xpos 0
+   ypos 141
+  }
+  Output {
+   name Output1
+   xpos 0
+   ypos 300
+  }
+ end_group
+ CopyBBox {
+  inputs 2
+  name CopyBBox
+  note_font "Bitstream Vera Sans"
+  xpos -376
+  ypos 90
+  disable {{!parent.boolean}}
+ }
+ Output {
+  name Output1
+  xpos -376
+  ypos 378
+ }
+push $Na500f000
+push $Na507e000
+ Viewer {
+  inputs 2
+  frame 1034
+  frame_range 1001-1062
+  center_fstop 0
+  name Viewer1
+  note_font "Bitstream Vera Sans"
+  xpos -1853
+  ypos 35
+ }
+end_group

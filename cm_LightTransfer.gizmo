@@ -11,7 +11,7 @@ Group {
  saturation 1
  addUserKnob {6 enableColor l "enable Color" +STARTLINE}
  addUserKnob {18 color_rgb l "" -STARTLINE}
- color_rgb {1.4 1 1}
+ color_rgb {1 1 1}
  addUserKnob {6 color_rgb_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
  addUserKnob {26 ""}
  addUserKnob {6 boolean l "copy bbox" +STARTLINE}

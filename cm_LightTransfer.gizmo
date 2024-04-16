@@ -1,4 +1,4 @@
-Gizmo {
+Group {
  inputs 3
  tile_color 0xdfff8fff
  note_font "Bitstream Vera Sans"

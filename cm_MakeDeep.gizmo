@@ -2,12 +2,11 @@ Group {
  tile_color 0xffff
  addUserKnob {20 settingsTeb l Settings}
  addUserKnob {7 deep_front l front R 1 10000}
- deep_front 1000
+ deep_front 100
  addUserKnob {7 deep_back l back -STARTLINE R 1 10000}
- deep_back 2000
+ deep_back 500
  addUserKnob {3 int_Samples l "number of samples"}
- int_Samples 2
- addUserKnob {41 alpha_mode l "alpha mode" T DeepFromFrames1.alpha_mode}
+ int_Samples 10
  addUserKnob {26 ""}
  addUserKnob {26 me l "" +STARTLINE T "MakeDeep v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
 }
@@ -15,20 +14,26 @@ Group {
   inputs 0
   name Input1
   xpos 706
-  ypos -487
+  ypos -541
  }
+ Dot {
+  name Dot1
+  xpos 734
+  ypos -463
+ }
+set Naa723000 [stack 0]
  DeepFromFrames {
   samples {{parent.int_Samples}}
   range_first {{frame}}
   range_last {{frame}}
+  alpha_mode additive
   zmin {{parent.deep_front}}
   zmax {{parent.deep_back}}
   name DeepFromFrames1
-  selected true
-  xpos 706
-  ypos -375
+  xpos 936
+  ypos -404
  }
-set N1937f000 [stack 0]
+set Naa6fa000 [stack 0]
  Viewer {
   frame_range 1-1224
   monitorOutNDISenderName "NukeX - DeepExtrude_v01 - Viewer1"
@@ -36,7 +41,15 @@ set N1937f000 [stack 0]
   xpos 334
   ypos -292
  }
-push $N1937f000
+push $Naa723000
+push $Naa6fa000
+ DeepRecolor {
+  inputs 2
+  targetInputAlpha true
+  name DeepRecolor1
+  xpos 706
+  ypos -323
+ }
  Output {
   name Output1
   xpos 706

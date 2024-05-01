@@ -8,7 +8,7 @@ Group {
  addUserKnob {3 int_Samples l "number of samples"}
  int_Samples 10
  addUserKnob {26 ""}
- addUserKnob {26 me l "" +STARTLINE T "MakeDeep v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
+ addUserKnob {26 me l "" +STARTLINE T "DeepFrom2D v1.0 - (c) 2024 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#00aceb;\">www.chrismccrowe.com</a>"}
 }
  Input {
   inputs 0

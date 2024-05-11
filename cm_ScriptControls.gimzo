@@ -1,41 +1,42 @@
 Group {
- inputs 0
- name ScriptControls
- tile_color 0x34eb6e00
- label On
- selected true
- xpos 466
- ypos -312
- addUserKnob {20 controls l Controls}
- addUserKnob {26 text_2 l "cm_Switches        "}
- addUserKnob {26 space l "" +STARTLINE T "   "}
- addUserKnob {26 text l "" +STARTLINE T State:}
- addUserKnob {22 offBtn l Off -STARTLINE T "\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Off\")\nc.setValue(hex_color_to_int(\"eb4034\"))\n\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(0)\n\n"}
- addUserKnob {22 onBtn l On -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"On\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(1)"}
- addUserKnob {22 otherBtn l Other -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Alt\")\nc.setValue(hex_color_to_int(\"3464eb\"))\n\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(2)"}
- addUserKnob {26 space2 l "" +STARTLINE T "  "}
- addUserKnob {26 sapce6 l "" +STARTLINE T "   "}
- addUserKnob {26 text_3 l cm_CropOverscan}
- addUserKnob {26 space3 l "" +STARTLINE T "   "}
- addUserKnob {7 bboxSize l "Set All Bboxes"}
- bboxSize 80
- addUserKnob {22 bbox_button l Set -STARTLINE T "bb = (nuke.thisNode()\['bboxSize'].value())\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_CropOverscan'):\n            i.knob('overscan_px').setValue(bb)\n"}
- addUserKnob {26 space6 l "" +STARTLINE T "   "}
- addUserKnob {26 text_1 l "dark backdrops"}
- addUserKnob {22 python_button l "do it" T "with nuke.root():\n    for i in nuke.allNodes():\n        if i.Class() == \"BackdropNode\":\n            i\['tile_color'].setValue(0x272727ff)\n            i\['note_font_color'].setValue(0xf9f9f9ff)" +STARTLINE}
- addUserKnob {26 ""}
- addUserKnob {26 space4 l "" +STARTLINE T "   "}
- addUserKnob {26 me l "" +STARTLINE T "ScriptControls v1.0 - (c) 2022 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#69a1fa;\">www.chrismccrowe.com</a>"}
+inputs 0
+name ScriptControls
+tile_color 0x34eb6e00
+label On
+selected true
+xpos 12106
+ypos 34624
+addUserKnob {20 controls l Controls}
+addUserKnob {26 text_2 l "cm_Switches        "}
+addUserKnob {26 space l "" +STARTLINE T "   "}
+addUserKnob {26 text l "" +STARTLINE T State:}
+addUserKnob {22 offBtn l Off -STARTLINE T "\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Off\")\nc.setValue(hex_color_to_int(\"eb4034\"))\n\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(0)\n\n"}
+addUserKnob {22 onBtn l On -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"On\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(1)"}
+addUserKnob {22 otherBtn l Other -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Alt\")\nc.setValue(hex_color_to_int(\"3464eb\"))\n\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(2)"}
+addUserKnob {26 space2 l "" +STARTLINE T "  "}
+addUserKnob {26 sapce6 l "" +STARTLINE T "   "}
+addUserKnob {26 text_3 l cm_CropOverscan}
+addUserKnob {26 space3 l "" +STARTLINE T "   "}
+addUserKnob {7 bboxSize l "Set All Bboxes"}
+bboxSize 80
+addUserKnob {22 bbox_button l Set -STARTLINE T "bb = (nuke.thisNode()\['bboxSize'].value())\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_CropOverscan'):\n            i.knob('overscan_px').setValue(bb)\n"}
+addUserKnob {26 space6 l "" +STARTLINE T "   "}
+addUserKnob {26 "" +STARTLINE}
+addUserKnob {26 text_1 l colors: T "all dark backdrops and blue stickynotes"}
+addUserKnob {22 python_button l "¯\\_(ツ)_/¯" T "with nuke.root():\n    for i in nuke.allNodes():\n        if i.Class() == \"BackdropNode\":\n            i\['tile_color'].setValue(0x272727ff)\n            i\['note_font_color'].setValue(0xf9f9f9ff)\n        if i.Class() == \"StickyNote\":\n            i\['tile_color'].setValue(0x6fffff)\n            i\['note_font_color'].setValue(0x9fdeffff)" +STARTLINE}
+addUserKnob {26 ""}
+addUserKnob {26 space4 l "" +STARTLINE T "   "}
+addUserKnob {26 me l "" +STARTLINE T "ScriptControls v1.0 - (c) 2022 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#69a1fa;\">www.chrismccrowe.com</a>"}
 }
- NoOp {
-  inputs 0
-  name NoOp1
-  xpos 825
-  ypos -579
- }
- Output {
-  name Output1
-  xpos 825
-  ypos -479
- }
+NoOp {
+inputs 0
+name NoOp1
+xpos 825
+ypos -579
+}
+Output {
+name Output1
+xpos 825
+ypos -479
+}
 end_group

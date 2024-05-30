@@ -12,7 +12,7 @@ Group {
  addUserKnob {7 brightness l "brightness multiply" R 0 100}
  brightness 50
  addUserKnob {7 softness R 0 3}
- softness 0.3
+ softness 1
  addUserKnob {7 saturation R 0 2}
  saturation 1
  addUserKnob {6 enableColor l "enable Color" +STARTLINE}

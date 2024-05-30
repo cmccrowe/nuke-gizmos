@@ -1,17 +1,23 @@
 Group {
- inputs 3
+ inputs 2
+ name LightTransfer
  tile_color 0xdfff8fff
  note_font "Bitstream Vera Sans"
+ selected true
+ xpos 490
+ ypos -295
  addUserKnob {20 settings l LightTransfer}
+ addUserKnob {6 range_1 l range +STARTLINE}
+ addUserKnob {41 range T Keyer1.range}
  addUserKnob {7 brightness l "brightness multiply" R 0 100}
  brightness 50
  addUserKnob {7 softness R 0 3}
- softness 1
+ softness 0.3
  addUserKnob {7 saturation R 0 2}
  saturation 1
  addUserKnob {6 enableColor l "enable Color" +STARTLINE}
  addUserKnob {18 color_rgb l "" -STARTLINE}
- color_rgb {1 1 1}
+ color_rgb {1.4 1 1}
  addUserKnob {6 color_rgb_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
  addUserKnob {26 ""}
  addUserKnob {6 boolean l "copy bbox" +STARTLINE}
@@ -29,16 +35,16 @@ Group {
   inputs 0
   name target
   xpos -376
-  ypos -859
-  number 1
+  ypos -870
  }
+set N161879c0 [stack 0]
  Dot {
   name Dot18
   note_font "Bitstream Vera Sans"
   xpos -348
   ypos -646
  }
-set Na500e000 [stack 0]
+set N1616b800 [stack 0]
  Dot {
   name Dot19
   note_font "Bitstream Vera Sans"
@@ -58,13 +64,34 @@ set Na500e000 [stack 0]
   ypos -128
   number 2
  }
+push $N1616b800
+ Dot {
+  name Dot2
+  note_font "DejaVu Sans"
+  xpos -348
+  ypos -459
+ }
+set N18ff5960 [stack 0]
+ Dot {
+  name Dot3
+  note_font "DejaVu Sans"
+  xpos -675
+  ypos -459
+ }
+ Keyer {
+  operation "luminance key"
+  name Keyer1
+  note_font "DejaVu Sans"
+  xpos -703
+  ypos -336
+ }
  Input {
   inputs 0
   name src
   xpos -892
-  ypos -851
+  ypos -887
+  number 1
  }
-set Na500f000 [stack 0]
  Blur {
   channels rgba
   size {{parent.softness}}
@@ -181,7 +208,6 @@ set Na500f000 [stack 0]
   xpos -892
   ypos -490
  }
-set Na507e000 [stack 0]
  Group {
   name cm_CropOverscan
   tile_color 0xc641c9ff
@@ -258,14 +284,24 @@ set Na507e000 [stack 0]
   xpos -864
   ypos -198
  }
-push $Na500e000
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge3
+  note_font "DejaVu Sans"
+  xpos -703
+  ypos -196
+  disable {{!parent.range_1}}
+ }
+set N18fc47c0 [stack 0]
+push $N18ff5960
  Dot {
   name Dot1
   note_font "Bitstream Vera Sans"
   xpos -348
   ypos -289
  }
-set Na50b4400 [stack 0]
+set N16294730 [stack 0]
  Merge2 {
   inputs 2
   operation multiply
@@ -275,7 +311,7 @@ set Na50b4400 [stack 0]
   xpos -548
   ypos -196
  }
-push $Na50b4400
+push $N16294730
  Merge2 {
   inputs 2+1
   operation plus
@@ -336,11 +372,11 @@ push $Na50b4400
   xpos -376
   ypos 378
  }
-push $Na500f000
-push $Na507e000
+push $N161879c0
+push $N18fc47c0
  Viewer {
   inputs 2
-  frame 1034
+  frame 1012
   frame_range 1001-1062
   center_fstop 0
   name Viewer1

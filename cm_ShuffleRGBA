@@ -1,0 +1,221 @@
+Group {
+ name ShuffleRGBA
+ tile_color 0x913a4aff
+ note_font "Verdana"
+ selected true
+ xpos -40
+ ypos -460
+ addUserKnob {20 settings l SuffleRGBA}
+ addUserKnob {26 text_5 l "" +STARTLINE T "   "}
+ addUserKnob {41 in1 l channeel T Shuffle5.in1}
+ addUserKnob {26 text_6 l "" +STARTLINE T "   "}
+ addUserKnob {26 text l enable}
+ addUserKnob {26 text_2 l "" +STARTLINE T "   "}
+ addUserKnob {6 enableRed l Red +STARTLINE}
+ enableRed true
+ addUserKnob {6 enableGreen l Green -STARTLINE}
+ enableGreen true
+ addUserKnob {6 enableBlue l Blue -STARTLINE}
+ enableBlue true
+ addUserKnob {6 enableAlpha l Alpha -STARTLINE}
+ addUserKnob {26 text_3 l "" +STARTLINE T "   "}
+ addUserKnob {26 ""}
+ addUserKnob {26 text_7 l "" +STARTLINE T "  "}
+ addUserKnob {41 operation T Merge1.operation}
+ addUserKnob {26 text_8 l "" +STARTLINE T "   "}
+ addUserKnob {26 ""}
+ addUserKnob {26 text_4 l "" +STARTLINE T "   "}
+ addUserKnob {26 text_1 l "" +STARTLINE T "ShuffleRGBA v1.0 - (c) 2022 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#69a1fa;\">www.chrismccrowe.com</a>"}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 785
+  ypos 572
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 black -1 -1 rgba.alpha 0 3"
+  name Shuffle5
+  label "\[value in1]-->\[value out1]"
+  note_font "DejaVu Sans"
+  xpos 785
+  ypos 657
+ }
+set N29a7d800 [stack 0]
+ Dot {
+  name Dot1
+  note_font "DejaVu Sans"
+  xpos 813
+  ypos 759
+ }
+set N29a7d400 [stack 0]
+ Shuffle2 {
+  fromInput1 {{0} B}
+  out1 alpha
+  fromInput2 {{0} B}
+  mappings "1 rgba.alpha 0 3 rgba.alpha 0 0"
+  name Shuffle39
+  tile_color 0x4f4f4fff
+  label "\[value in1]-->\[value out1]"
+  note_font "DejaVu Sans"
+  xpos 1245
+  ypos 872
+ }
+push $N29a7d400
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 black -1 -1 rgba.red 0 0 black -1 -1 rgba.green 0 1 black -1 -1 rgba.blue 0 2 black -1 -1 rgba.alpha 0 3"
+  name Shuffle4
+  label "\[value in1]-->\[value out1]"
+  note_font "DejaVu Sans"
+  xpos 1104
+  ypos 868
+ }
+ Switch {
+  inputs 2
+  which {{parent.enableAlpha}}
+  name Switch4
+  note_font "DejaVu Sans"
+  xpos 1179
+  ypos 946
+ }
+push $N29a7d400
+ Shuffle2 {
+  fromInput1 {{0} B}
+  out1 alpha
+  fromInput2 {{0} B}
+  mappings "1 rgba.blue 0 2 rgba.alpha 0 0"
+  name Shuffle38
+  tile_color 0xffff
+  label "\[value in1]-->\[value out1]"
+  note_font "DejaVu Sans"
+  xpos 971
+  ypos 867
+ }
+push $N29a7d400
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 black -1 -1 rgba.red 0 0 black -1 -1 rgba.green 0 1 black -1 -1 rgba.blue 0 2 black -1 -1 rgba.alpha 0 3"
+  name Shuffle3
+  label "\[value in1]-->\[value out1]"
+  note_font "DejaVu Sans"
+  xpos 852
+  ypos 862
+ }
+ Switch {
+  inputs 2
+  which {{parent.enableBlue}}
+  name Switch3
+  note_font "DejaVu Sans"
+  xpos 918
+  ypos 938
+ }
+push 0
+push $N29a7d400
+ Shuffle2 {
+  fromInput1 {{0} B}
+  out1 alpha
+  fromInput2 {{0} B}
+  mappings "1 rgba.red 0 0 rgba.alpha 0 0"
+  name Shuffle36
+  tile_color 0xff0000ff
+  label "\[value in1]-->\[value out1]"
+  note_font "DejaVu Sans"
+  xpos 412
+  ypos 864
+ }
+push $N29a7d400
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 black -1 -1 rgba.red 0 0 black -1 -1 rgba.green 0 1 black -1 -1 rgba.blue 0 2 black -1 -1 rgba.alpha 0 3"
+  name Shuffle1
+  label "\[value in1]-->\[value out1]"
+  note_font "DejaVu Sans"
+  xpos 259
+  ypos 872
+ }
+ Switch {
+  inputs 2
+  which {{parent.enableRed}}
+  name Switch1
+  note_font "DejaVu Sans"
+  xpos 329
+  ypos 941
+ }
+push $N29a7d400
+ Shuffle2 {
+  fromInput1 {{0} B}
+  out1 alpha
+  fromInput2 {{0} B}
+  mappings "1 rgba.green 0 1 rgba.alpha 0 0"
+  name Shuffle37
+  tile_color 0xff00ff
+  label "\[value in1]-->\[value out1]"
+  note_font "DejaVu Sans"
+  xpos 693
+  ypos 864
+ }
+push $N29a7d400
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 black -1 -1 rgba.red 0 0 black -1 -1 rgba.green 0 1 black -1 -1 rgba.blue 0 2 black -1 -1 rgba.alpha 0 3"
+  name Shuffle2
+  label "\[value in1]-->\[value out1]"
+  note_font "DejaVu Sans"
+  xpos 544
+  ypos 869
+ }
+ Switch {
+  inputs 2
+  which {{parent.enableGreen}}
+  name Switch2
+  note_font "DejaVu Sans"
+  xpos 609
+  ypos 930
+ }
+ Merge2 {
+  inputs 4+1
+  operation screen
+  name Merge1
+  note_font "DejaVu Sans"
+  xpos 768
+  ypos 1056
+ }
+ Shuffle {
+  in alpha
+  name ALPHA
+  tile_color 0xff
+  note_font "Bitstream Vera Sans Bold"
+  note_font_size 21
+  xpos 768
+  ypos 1097
+  postage_stamp true
+ }
+ Clamp {
+  channels alpha
+  name ClampAlpha
+  note_font "Bitstream Vera Sans"
+  xpos 768
+  ypos 1179
+ }
+ Output {
+  name Output1
+  xpos 768
+  ypos 1232
+ }
+push $N29a7d800
+ Viewer {
+  frame_range 1001-1027
+  center_fstop 0
+  name Viewer1
+  note_font "DejaVu Sans"
+  xpos -249
+  ypos 1494
+ }
+end_group

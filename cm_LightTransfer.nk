@@ -2,7 +2,7 @@ Group {
  inputs 2
  name LightTransfer
  tile_color 0xdfff8fff
- note_font "Bitstream Vera Sans"
+ note_font "Verdana"
  selected true
  xpos 490
  ypos -295

@@ -3,7 +3,7 @@ Switch {
  name Switch
  tile_color 0x34eb6e00
  label "\[value which]\n"
- note_font "DejaVu Sans Bold"
+ note_font "Verdana"
  selected true
  xpos -135
  ypos -363

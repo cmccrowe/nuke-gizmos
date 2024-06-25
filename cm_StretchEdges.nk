@@ -4,7 +4,7 @@ Group {
  note_font_color 0xffffffff
  selected true
  xpos 8
- ypos -398
+ ypos -399
  addUserKnob {20 Settings l StretchEdges}
  addUserKnob {26 text_4 l "" +STARTLINE T " "}
  addUserKnob {26 direction l "" +STARTLINE T "Stretch Directions:"}
@@ -28,12 +28,12 @@ Group {
  erode 10
  addUserKnob {26 text_3 l "" +STARTLINE T " "}
  addUserKnob {26 ""}
+ addUserKnob {26 text_7 l "" +STARTLINE T " "}
  addUserKnob {6 bbox l "maintain bbox" +STARTLINE}
- bbox true
  addUserKnob {6 blackOutside l "black outside" -STARTLINE}
- blackOutside true
+ addUserKnob {26 text_8 l "" +STARTLINE T " "}
  addUserKnob {26 "" +STARTLINE}
- addUserKnob {26 text_5 l "" +STARTLINE T " "}
+ addUserKnob {26 text_5 l "" +STARTLINE T "  "}
  addUserKnob {26 Credit l "" +STARTLINE T "StretchEdges v1.0 | © 2024 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
 }
  Input {

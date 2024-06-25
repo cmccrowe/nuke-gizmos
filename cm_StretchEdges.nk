@@ -3,11 +3,11 @@ Group {
  tile_color 0x6a49efff
  note_font_color 0xffffffff
  selected true
- xpos -40
- ypos -75
+ xpos 29
+ ypos -432
  addUserKnob {20 Settings l StretchEdges}
  addUserKnob {26 text_4 l "" +STARTLINE T " "}
- addUserKnob {26 direction l "" +STARTLINE T "Stretch Direction:"}
+ addUserKnob {26 direction l "" +STARTLINE T "Stretch Directions:"}
  addUserKnob {26 text_6 l "" +STARTLINE T " "}
  addUserKnob {26 ""}
  addUserKnob {26 text l "" +STARTLINE T "   "}
@@ -36,49 +36,16 @@ Group {
   xpos -189
   ypos -393
  }
-set N7c75c400 [stack 0]
- Dot {
-  name Dot1
-  xpos -161
-  ypos -252
- }
-set N7c75c800 [stack 0]
- Dot {
-  name Dot2
-  xpos -598
-  ypos -252
- }
+set Na6adfc00 [stack 0]
  Shuffle2 {
   fromInput1 {{0} B}
   fromInput2 {{0} B}
   mappings "4 black -1 -1 rgba.alpha 0 3 black -1 -1 rgba.red 0 0 black -1 -1 rgba.green 0 1 black -1 -1 rgba.blue 0 2"
   name Shuffle1
-  xpos -626
-  ypos -161
+  xpos -636
+  ypos 46
  }
- Dot {
-  name Dot3
-  xpos -598
-  ypos -86
- }
-set N7c75d400 [stack 0]
- Dot {
-  name Dot6
-  xpos -598
-  ypos 43
- }
-set N7c6d2400 [stack 0]
- Dot {
-  name Dot5
-  xpos -598
-  ypos 171
- }
-set N7c6d2800 [stack 0]
- Dot {
-  name Dot4
-  xpos -598
-  ypos 281
- }
+set N2c8ba800 [stack 0]
  Ramp {
   cliptype none
   p0 {{parent.Crop_To_BBox.box.r/2} {parent.Crop_To_BBox.box.y+parent.erode}}
@@ -87,7 +54,7 @@ set N7c6d2800 [stack 0]
   xpos -390
   ypos 284
  }
-push $N7c6d2800
+push $N2c8ba800
  Ramp {
   cliptype none
   p0 {{parent.Crop_To_BBox.box.r/2} {parent.Crop_To_BBox.box.t-parent.erode}}
@@ -96,7 +63,7 @@ push $N7c6d2800
   xpos -385
   ypos 174
  }
-push $N7c6d2400
+push $N2c8ba800
  Ramp {
   cliptype none
   p0 {{parent.Crop_To_BBox.box.r-parent.erode} {parent.Crop_To_BBox.box.t/2}}
@@ -105,7 +72,7 @@ push $N7c6d2400
   xpos -355
   ypos 46
  }
-push $N7c75d400
+push $N2c8ba800
  Ramp {
   cliptype none
   p0 {{parent.Crop_To_BBox.box.x+parent.erode} {parent.Crop_To_BBox.box.t/2}}
@@ -114,8 +81,7 @@ push $N7c75d400
   xpos -361
   ypos -83
  }
-set N7c75d800 [stack 0]
-push $N7c75c800
+push $Na6adfc00
  Copy {
   inputs 2
   from0 rgba.alpha
@@ -195,31 +161,22 @@ push $N7c75c800
  Remove {
   channels forward
   name Remove1
+  selected true
   xpos -189
-  ypos 356
+  ypos 370
  }
  Output {
   name Output1
   xpos -189
   ypos 440
  }
-push $N7c75c400
+push $Na6adfc00
  Crop {
   box {{input.bbox.x-bbox_padding} {input.bbox.y-bbox_padding} {input.bbox.r+bbox_padding} {input.bbox.t+bbox_padding}}
   name Crop_To_BBox
-  xpos -449
-  ypos -365
+  xpos -675
+  ypos -393
   addUserKnob {20 padding_tab l Padding}
   addUserKnob {7 bbox_padding l "bbox padding" t "Add or subtract from bounding box" R -100 100}
- }
-push $N7c75d800
- Viewer {
-  frame_range 1-100
-  monitorOutNDISenderName "NukeX - StretchEdges_v01 - Viewer1"
-  monitorOutOutputTransform rec709
-  name Viewer1
-  selected true
-  xpos -543
-  ypos 484
  }
 end_group

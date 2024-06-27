@@ -1,0 +1,251 @@
+Group {
+ inputs 2
+ name cm_Wipe
+ tile_color 0x10101ff
+ note_font "DejaVu Sans Bold"
+ selected true
+ xpos 66
+ ypos -480
+ cached true
+ addUserKnob {20 settings l cm_Wipe}
+ addUserKnob {26 text_11 l "" +STARTLINE T " "}
+ addUserKnob {6 line l "enable line" +STARTLINE}
+ line true
+ addUserKnob {26 text_13 l "" +STARTLINE T " "}
+ addUserKnob {7 thickness R 0 3}
+ thickness 1
+ addUserKnob {19 color_rgba l color}
+ color_rgba {1 1 1 1}
+ addUserKnob {6 color_rgba_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+ addUserKnob {26 text_7 l "" +STARTLINE T " "}
+ addUserKnob {26 ""}
+ addUserKnob {26 text_12 l "" +STARTLINE T " "}
+ addUserKnob {26 text_5 l "" +STARTLINE T "Wipe Position"}
+ addUserKnob {26 text_6 l "" +STARTLINE T " "}
+ addUserKnob {26 text_4 l "" +STARTLINE T <h1>BEFORE</h1>}
+ addUserKnob {7 wipe l "" -STARTLINE}
+ wipe 0.575
+ addUserKnob {26 text_9 l "" -STARTLINE T <h1>AFTER</h1>}
+ addUserKnob {26 text_10 l "" +STARTLINE T " "}
+ addUserKnob {7 rotate R -180 180}
+ addUserKnob {7 softness R 0 500}
+ addUserKnob {26 text_8 l "" +STARTLINE T " "}
+ addUserKnob {26 text_1 l "" +STARTLINE T " "}
+ addUserKnob {26 ""}
+ addUserKnob {26 text_2 l "" +STARTLINE T " "}
+ addUserKnob {26 text_3 l "" +STARTLINE T "Wipe v1.0 | © 2024 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
+}
+ Input {
+  inputs 0
+  name before
+  xpos 855
+  ypos -30
+ }
+set N4e80fc00 [stack 0]
+ Dot {
+  name Dot1
+  note_font "DejaVu Sans"
+  xpos 883
+  ypos 87
+ }
+set Na661e000 [stack 0]
+ Dot {
+  name Dot2
+  note_font "DejaVu Sans"
+  xpos 766
+  ypos 87
+ }
+ Dot {
+  name Dot3
+  note_font "DejaVu Sans"
+  xpos 766
+  ypos 801
+ }
+push $Na661e000
+ Dot {
+  name Dot4
+  note_font "DejaVu Sans"
+  xpos 1243
+  ypos 87
+ }
+ Crop {
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  reformat true
+  crop false
+  name Crop_toBbox1
+  xpos 1215
+  ypos 168
+  disable {{(parent.croptobbox)-1}}
+ }
+ Remove {
+  operation keep
+  channels rgb
+  name Remove1
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 202
+ }
+ Rectangle {
+  cliptype none
+  area {{bbox.x-width} {"bbox.y-(width *2)"} {parent.Wipe_Position.wipe_position.x} {bbox.t+(width*2)}}
+  softness {{parent.softness}}
+  name Rectangle1
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 235
+ }
+ Transform {
+  rotate {{parent.rotate}}
+  center {{parent.Wipe_Position.wipe_position} {parent.Wipe_Position.wipe_position}}
+  shutteroffset centred
+  name Transform1
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 268
+ }
+ Dot {
+  name Dot5
+  note_font "DejaVu Sans"
+  xpos 1243
+  ypos 319
+ }
+set Na6646000 [stack 0]
+ EdgeDetectWrapper {
+  channels alpha
+  name EdgeDetect1
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 366
+ }
+ Dilate {
+  channels alpha
+  size -1
+  name Dilate1
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 411
+ }
+set Na6646800 [stack 0]
+ Dilate {
+  channels alpha
+  size {{parent.thickness-1}}
+  name Dilate2
+  note_font "DejaVu Sans"
+  selected true
+  xpos 1215
+  ypos 460
+ }
+ Transform {
+  scale {1.005 1}
+  center {{width/2} {height/2}}
+  name Transform2
+  xpos 1215
+  ypos 506
+ }
+ Grade {
+  channels rgba
+  multiply 11
+  black_clamp false
+  white_clamp true
+  name Grade1
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 530
+ }
+ Shuffle {
+  in alpha
+  name ALPHA
+  tile_color 0xff
+  note_font "Bitstream Vera Sans Bold"
+  note_font_size 21
+  xpos 1215
+  ypos 554
+  postage_stamp true
+ }
+ Unpremult {
+  name Unpremult1
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 638
+ }
+ Grade {
+  channels rgba
+  white {{parent.color_rgba} {parent.color_rgba} {parent.color_rgba} {parent.color_rgba}}
+  black_clamp false
+  name Grade2
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 664
+ }
+ Premult {
+  name Premult1
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 690
+ }
+ Clamp {
+  name Clamp1
+  note_font "DejaVu Sans"
+  xpos 1215
+  ypos 728
+ }
+push $Na6646000
+ Input {
+  inputs 0
+  name after
+  xpos 597
+  ypos 321
+  number 1
+ }
+push $Na661e000
+ Merge2 {
+  inputs 2+1
+  bbox B
+  name Merge1
+  note_font "DejaVu Sans"
+  xpos 855
+  ypos 321
+ }
+ Merge2 {
+  inputs 2
+  bbox B
+  name Merge2
+  note_font "DejaVu Sans"
+  xpos 855
+  ypos 757
+  disable {{!parent.line}}
+ }
+ CopyBBox {
+  inputs 2
+  name CopyBBox1
+  note_font "DejaVu Sans"
+  xpos 855
+  ypos 803
+ }
+ Output {
+  name Output1
+  xpos 855
+  ypos 866
+ }
+push $N4e80fc00
+ NoOp {
+  name Wipe_Position
+  note_font "DejaVu Sans"
+  xpos 520
+  ypos -30
+  addUserKnob {20 User}
+  addUserKnob {12 wipe_position l wipe}
+  wipe_position {{parent.wipe*width} {bbox.t/2}}
+ }
+push $Na6646800
+ Viewer {
+  frame_range 1-100
+  center_fstop 0
+  monitorOutNDISenderName "NukeX - untitled - Viewer1"
+  monitorOutOutputTransform rec709
+  name Viewer1
+  note_font "DejaVu Sans"
+  xpos 1066
+  ypos 948
+ }
+end_group

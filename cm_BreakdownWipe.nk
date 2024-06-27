@@ -1,6 +1,6 @@
 Group {
  inputs 2
- name cm_Wipe
+ name cm_BreakdownWipe
  tile_color 0x10101ff
  note_font "DejaVu Sans Bold"
  selected true
@@ -33,7 +33,7 @@ Group {
  addUserKnob {26 text_1 l "" +STARTLINE T " "}
  addUserKnob {26 ""}
  addUserKnob {26 text_2 l "" +STARTLINE T " "}
- addUserKnob {26 text_3 l "" +STARTLINE T "Wipe v1.0 | © 2024 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
+ addUserKnob {26 text_3 l "" +STARTLINE T "BreakdownWipe v1.0 | © 2024 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
 }
  Input {
   inputs 0
@@ -65,7 +65,8 @@ push $Na661e000
  Dot {
   name Dot4
   note_font "DejaVu Sans"
-  xpos 1243
+  selected true
+  xpos 1031
   ypos 87
  }
  Crop {
@@ -73,7 +74,8 @@ push $Na661e000
   reformat true
   crop false
   name Crop_toBbox1
-  xpos 1215
+  selected true
+  xpos 1003
   ypos 168
   disable {{(parent.croptobbox)-1}}
  }
@@ -82,7 +84,8 @@ push $Na661e000
   channels rgb
   name Remove1
   note_font "DejaVu Sans"
-  xpos 1215
+  selected true
+  xpos 1003
   ypos 202
  }
  Rectangle {
@@ -91,7 +94,8 @@ push $Na661e000
   softness {{parent.softness}}
   name Rectangle1
   note_font "DejaVu Sans"
-  xpos 1215
+  selected true
+  xpos 1003
   ypos 235
  }
  Transform {
@@ -100,13 +104,15 @@ push $Na661e000
   shutteroffset centred
   name Transform1
   note_font "DejaVu Sans"
-  xpos 1215
+  selected true
+  xpos 1003
   ypos 268
  }
  Dot {
   name Dot5
   note_font "DejaVu Sans"
-  xpos 1243
+  selected true
+  xpos 1031
   ypos 319
  }
 set Na6646000 [stack 0]
@@ -114,33 +120,35 @@ set Na6646000 [stack 0]
   channels alpha
   name EdgeDetect1
   note_font "DejaVu Sans"
-  xpos 1215
-  ypos 366
+  selected true
+  xpos 1003
+  ypos 378
  }
  Dilate {
   channels alpha
   size -1
   name Dilate1
   note_font "DejaVu Sans"
-  xpos 1215
-  ypos 411
+  selected true
+  xpos 1003
+  ypos 412
  }
-set Na6646800 [stack 0]
  Dilate {
   channels alpha
   size {{parent.thickness-1}}
   name Dilate2
   note_font "DejaVu Sans"
   selected true
-  xpos 1215
-  ypos 460
+  xpos 1003
+  ypos 446
  }
  Transform {
   scale {1.005 1}
   center {{width/2} {height/2}}
   name Transform2
-  xpos 1215
-  ypos 506
+  selected true
+  xpos 1003
+  ypos 480
  }
  Grade {
   channels rgba
@@ -149,8 +157,9 @@ set Na6646800 [stack 0]
   white_clamp true
   name Grade1
   note_font "DejaVu Sans"
-  xpos 1215
-  ypos 530
+  selected true
+  xpos 1003
+  ypos 504
  }
  Shuffle {
   in alpha
@@ -158,15 +167,17 @@ set Na6646800 [stack 0]
   tile_color 0xff
   note_font "Bitstream Vera Sans Bold"
   note_font_size 21
-  xpos 1215
-  ypos 554
+  selected true
+  xpos 1003
+  ypos 528
   postage_stamp true
  }
  Unpremult {
   name Unpremult1
   note_font "DejaVu Sans"
-  xpos 1215
-  ypos 638
+  selected true
+  xpos 1003
+  ypos 612
  }
  Grade {
   channels rgba
@@ -174,20 +185,29 @@ set Na6646800 [stack 0]
   black_clamp false
   name Grade2
   note_font "DejaVu Sans"
-  xpos 1215
-  ypos 664
+  selected true
+  xpos 1003
+  ypos 636
  }
  Premult {
   name Premult1
   note_font "DejaVu Sans"
-  xpos 1215
-  ypos 690
+  selected true
+  xpos 1003
+  ypos 660
  }
  Clamp {
   name Clamp1
   note_font "DejaVu Sans"
-  xpos 1215
-  ypos 728
+  selected true
+  xpos 1003
+  ypos 684
+ }
+ Dot {
+  name Dot6
+  selected true
+  xpos 1031
+  ypos 754
  }
 push $Na6646000
  Input {
@@ -231,21 +251,10 @@ push $N4e80fc00
  NoOp {
   name Wipe_Position
   note_font "DejaVu Sans"
-  xpos 520
+  xpos 706
   ypos -30
   addUserKnob {20 User}
   addUserKnob {12 wipe_position l wipe}
   wipe_position {{parent.wipe*width} {bbox.t/2}}
- }
-push $Na6646800
- Viewer {
-  frame_range 1-100
-  center_fstop 0
-  monitorOutNDISenderName "NukeX - untitled - Viewer1"
-  monitorOutOutputTransform rec709
-  name Viewer1
-  note_font "DejaVu Sans"
-  xpos 1066
-  ypos 948
  }
 end_group

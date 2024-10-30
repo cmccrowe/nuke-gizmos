@@ -13,5 +13,5 @@ Dot {
  addUserKnob {22 connect l "Connect This" -STARTLINE T "n = nuke.thisNode()\nk = n\['cameraList']\nif k.value() != '-----------------------------------':\n    cam = nuke.toNode(n\['cameraList'].value())\n    n.setInput(0, cam)\n    n\['label'].setValue(cam\['name'].value())\nelse:\n    nuke.message(\"Hit Reload\")"}
  addUserKnob {22 python_button l "Reconnect All" -STARTLINE T "import nuke\n\nfor i in nuke.allNodes():\n    if i\['name'].value().startswith('cm_cameraDot'):\n        n = nuke.thisNode()\n        cam = nuke.toNode(i\['cameraList'].value())\n        if i\['cameraList'].value() != \"-----------------------------------\" or \"\":\n            i.setInput(0, cam)\n            i\['label'].setValue(cam\['name'].value())\n    else:\n        pass"}
  addUserKnob {26 ""}
- addUserKnob {26 cm l "" +STARTLINE T "cm_cameraDot v1.1 - (c) 2022 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
+ addUserKnob {26 cm l "" +STARTLINE T "cm_cameraDot v1.1 - (c) 2024 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
 }

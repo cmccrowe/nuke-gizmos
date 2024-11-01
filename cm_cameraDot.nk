@@ -1,25 +1,29 @@
 Dot {
-name cm_cameraDot10
+name cm_cameraDot
 knobChanged auto_reconnect_cameraDot.connect_the_Dots()
 note_font "Bitstream Vera Sans Bold"
 note_font_size 21
 note_font_color 0x5b5b5bff
 selected true
-xpos 2986
-ypos 10043
+xpos -3841
+ypos -22159
 hide_input true
 addUserKnob {20 controls l cameraDot}
 addUserKnob {4 cameraList l "connect camera" M {----------------------------------- ""}}
 addUserKnob {22 reloadCams l "Reload Camera List" -STARTLINE T "def getCameras():\n    with nuke.root():\n        myCameras = \[]\n    \n        ##For loop to grab all nodes in the class\n        for i in nuke.allNodes():\n            if i.Class() == \"Camera\" or i.Class() == \"Camera2\" or i.Class() == \"Camera3\" or i.Class() == \"Camera4\":\n                myCameras.append(i.knob('name').getValue())\n        \n        if myCameras == \[]:\n            resetCameras()\n        else:                \n            myCameras.sort()\n            return myCameras\n\n\n\n\ndef resetCameras():\n    n.setInput(0, None)\n    n\['label'].setValue(\"\")\n    if myCameras == \[]:\n        nuke.message(\"Bring in a camera\")   \n    return\n\n\n\nmyCameras = \[]\nn = nuke.thisNode()\nk = n\['cameraList']\ncurrent = k.value()\n\n\nif getCameras() == None:\n    n\['cameraList'].setValues(\['-----------------------------------'])\nelse:\n    with nuke.root():\n        k.setValues(getCameras())\n    k.setValue(current)"}
-addUserKnob {22 connect l "Connect This" -STARTLINE T "n = nuke.thisNode()\nk = n\['cameraList']\nif k.value() != '-----------------------------------':\n    cam = nuke.toNode(n\['cameraList'].value())\n    n.setInput(0, cam)\n    n\['cameraData'].clearFlag(nuke.INVISIBLE)\n    n\['label'].clearFlag(nuke.INVISIBLE)\n    n\['focalLength'].clearFlag(nuke.INVISIBLE)\n    n\['stop'].clearFlag(nuke.INVISIBLE)\n    n\['distance'].clearFlag(nuke.INVISIBLE)\n    n\['label'].setValue(cam\['name'].value())\n    n\['focalLength'].setValue(str(cam\['focal'].value()))\n    n\['stop'].setValue(str(cam\['fstop'].value()))\n    n\['distance'].setValue(str(cam\['focal_point'].value()))\nelse:\n    nuke.message(\"Hit Reload\")"}
+addUserKnob {22 connect l "Connect This" -STARTLINE T "n = nuke.thisNode()\nk = n\['cameraList']\nif k.value() != '-----------------------------------':\n    cam = nuke.toNode(n\['cameraList'].value())\n    n.setInput(0, cam)\n    n\['openCameraProperties'].clearFlag(nuke.INVISIBLE)\n    n\['zoomToCamera'].clearFlag(nuke.INVISIBLE)\n    n\['returnToDot'].clearFlag(nuke.INVISIBLE)\n    n\['cameraData'].clearFlag(nuke.INVISIBLE)\n    n\['label'].clearFlag(nuke.INVISIBLE)\n    n\['focalLength'].clearFlag(nuke.INVISIBLE)\n    n\['stop'].clearFlag(nuke.INVISIBLE)\n    n\['distance'].clearFlag(nuke.INVISIBLE)\n    n\['label'].setValue(cam\['name'].value())\n    n\['focalLength'].setValue(str(cam\['focal'].value()))\n    n\['stop'].setValue(str(cam\['fstop'].value()))\n    n\['distance'].setValue(str(cam\['focal_point'].value()))\nelse:\n    nuke.message(\"Hit Reload\")"}
 addUserKnob {22 python_button l "Reconnect All" -STARTLINE T "for i in nuke.allNodes():\n    if i\['name'].value().startswith('cm_cameraDot'):\n        cam = nuke.toNode(i\['cameraList'].value())\n        if i\['cameraList'].value() != \"-----------------------------------\" or \"\":\n            i.setInput(0, cam)\n            i\['label'].setValue(cam\['name'].value())\n    else:\n        pass"}
 addUserKnob {6 autoReconnect l "Auto Reconnect" +STARTLINE}
 autoReconnect true
+addUserKnob {26 ""}
+addUserKnob {22 openCameraProperties l "Open Properties" +INVISIBLE T "#Opens selected camera's properties panel\n\n\nn = nuke.thisNode() \ntry:\n    nuke.show(nuke.toNode(n\[\"cameraList\"].value()))\nexcept:\n    pass" +STARTLINE}
+addUserKnob {22 zoomToCamera l "Zoom to Camera" -STARTLINE +INVISIBLE T "#Zooms to selected camera\n\n\nn = nuke.thisNode()\ntry:\n    ni = nuke.toNode(n\[\"cameraList\"].value())\n    nuke.zoom(nuke.zoom(),(ni\[\"xpos\"].value(),ni\[\"ypos\"].value())) \nexcept:\n    nuke.message(\"Unable to zoom.\")"}
+addUserKnob {22 returnToDot l "Return to Dot" -STARTLINE +INVISIBLE T "#Returns to the dot\n\n\nn = nuke.thisNode()\ntry:\n    nuke.zoom(nuke.zoom(),(n\[\"xpos\"].value(),n\[\"ypos\"].value()))\nexcept:\n    pass"}
 addUserKnob {26 ""}
 addUserKnob {26 cameraData l "" +STARTLINE +INVISIBLE T "<span style=\"color:#FFD470;\">Camera Data</span>"}
 addUserKnob {26 focalLength l "Focal Length" +INVISIBLE T " "}
 addUserKnob {26 stop l T-Stop +INVISIBLE T " "}
 addUserKnob {26 distance l "Focal Distance" +INVISIBLE T " "}
 addUserKnob {26 ""}
-addUserKnob {26 cm l "" +STARTLINE T "cm_cameraDot v1.1 - (c) 2024 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
+addUserKnob {26 cm l "" +STARTLINE T "cm_cameraDot v1.2 - (c) 2024 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
 }

@@ -1,13 +1,31 @@
+BackdropNode {
+inputs 0
+name BackdropNode28
+tile_color 0x272727ff
+label "\n  ¯\\\\_(ツ)_/¯"
+note_font_size 100
+note_font_color 0xf9f9f9ff
+selected true
+xpos 2277
+ypos 11807
+bdwidth 507
+bdheight 578
+}
 Group {
 inputs 0
-name ScriptControls
+name cm_ScriptControls
 tile_color 0x34eb6e00
 label On
 selected true
-xpos 12106
-ypos 34624
+xpos 2490
+ypos 12067
 addUserKnob {20 controls l Controls}
-addUserKnob {26 text_2 l "cm_Switches        "}
+addUserKnob {26 text_14 l "Reads/Cache:       "}
+addUserKnob {26 text_15 l "" +STARTLINE T "   "}
+addUserKnob {22 python_button_5 l "Reload All Reads" T "import nuke\n\n\"\"\"\nThis module contains functionality of reloading all read nodes in the script.\n:return: None\n\"\"\"\n\ndef reload_all_reads():\n    \"\"\"\n    reloads all read nodes in the script\n    :return: None\n    \"\"\"\n\n\n    for node in nuke.allNodes('Read'):\n        node.knob(\"reload\").execute()\n\n    #nodes = nuke.allNodes()\n \n    #for node in nodes:\n    #   if node.Class() == \"Read\":\n    #       node.knob(\"reload\").execute()\n\nwith nuke.root():\n    reload_all_reads()" +STARTLINE}
+addUserKnob {22 python_button_6 l "Clear All Cache" -STARTLINE T "import nuke\nimport nukescripts\nimport os\n\n#clear all nuke caches\n\ndef clearMyCache():\n    nuke.clearRAMCache()\n    nuke.clearBlinkCache()\n    nuke.clearDiskCache()\n    os.system('drop_caches 3')\n\nwith nuke.root():\n    clearMyCache()"}
+addUserKnob {26 text_16 l "" +STARTLINE T "   "}
+addUserKnob {26 text_2 l "cm_Switches:        "}
 addUserKnob {26 space l "" +STARTLINE T "   "}
 addUserKnob {26 text l "" +STARTLINE T State:}
 addUserKnob {22 offBtn l Off -STARTLINE T "\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Off\")\nc.setValue(hex_color_to_int(\"eb4034\"))\n\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(0)\n\n"}
@@ -15,18 +33,36 @@ addUserKnob {22 onBtn l On -STARTLINE T "def hex_color_to_int(hexValue):\n    re
 addUserKnob {22 otherBtn l Other -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Alt\")\nc.setValue(hex_color_to_int(\"3464eb\"))\n\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(2)"}
 addUserKnob {26 space2 l "" +STARTLINE T "  "}
 addUserKnob {26 sapce6 l "" +STARTLINE T "   "}
-addUserKnob {26 text_3 l cm_CropOverscan}
+addUserKnob {26 text_6 l "cm_BatchOnly:    "}
+addUserKnob {26 text_7 l "" +STARTLINE T "   "}
+addUserKnob {26 text_10 l "" +STARTLINE T State:}
+addUserKnob {22 python_button_2 l "Enable All" -STARTLINE T "with nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_BatchOnly'):\n            i.knob('disable').setValue(0)\n"}
+addUserKnob {22 python_button_3 l "Disable All" -STARTLINE T "with nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_BatchOnly'):\n            i.knob('disable').setValue(1)\n"}
+addUserKnob {26 text_8 l "" +STARTLINE T "   "}
+addUserKnob {26 text_9 l "" +STARTLINE T "   "}
+addUserKnob {26 text_3 l cm_CropOverscan:}
 addUserKnob {26 space3 l "" +STARTLINE T "   "}
-addUserKnob {7 bboxSize l "Set All Bboxes"}
-bboxSize 80
-addUserKnob {22 bbox_button l Set -STARTLINE T "bb = (nuke.thisNode()\['bboxSize'].value())\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_CropOverscan'):\n            i.knob('overscan_px').setValue(bb)\n"}
+addUserKnob {7 bboxSize l "Set All Bboxes" R 0 100}
+bboxSize 10
+addUserKnob {22 bbox_button l Set -STARTLINE T "bb = (nuke.thisNode()\['bboxSize'].value())\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('OverscanCrop'):\n            i.knob('overscan_px').setValue(bb)\n"}
 addUserKnob {26 space6 l "" +STARTLINE T "   "}
-addUserKnob {26 "" +STARTLINE}
-addUserKnob {26 text_1 l colors: T "all dark backdrops and blue stickynotes"}
-addUserKnob {22 python_button l "¯\\_(ツ)_/¯" T "with nuke.root():\n    for i in nuke.allNodes():\n        if i.Class() == \"BackdropNode\":\n            i\['tile_color'].setValue(0x272727ff)\n            i\['note_font_color'].setValue(0xf9f9f9ff)\n        if i.Class() == \"StickyNote\":\n            i\['tile_color'].setValue(0x6fffff)\n            i\['note_font_color'].setValue(0x9fdeffff)" +STARTLINE}
+addUserKnob {26 text_11 l "cm_cameraDot:     "}
+addUserKnob {26 _3 l "" +STARTLINE T "   "}
+addUserKnob {22 python_button_4 l "Reconnect All My Dots Please" T "with nuke.root():\n    for i in nuke.allNodes('Dot'):\n        if i\['name'].value().startswith('cm_cameraDot'):\n            cam = nuke.toNode(i\['cameraList'].value())\n            if i\['cameraList'].value() != \"-----------------------------------\" or \"\":\n                i.setInput(0, cam)\n                i\['label'].setValue(cam\['name'].value())\n        else:\n            pass" +STARTLINE}
+addUserKnob {26 text_13 l "" +STARTLINE T "   "}
+addUserKnob {26 ""}
+addUserKnob {26 text_1 l "colors:                  " T ""}
+addUserKnob {26 text_12 l "" +STARTLINE T "   "}
+addUserKnob {26 _2 l "" +STARTLINE T "all dark backdrops, red pcomps and blue stickynotes"}
+addUserKnob {26 text_4 l "" +STARTLINE T "   "}
+addUserKnob {22 python_button l "Yeet ¯\\_(ツ)_/¯  (CAUTION!)" T "with nuke.root():\n    for i in nuke.allNodes():\n        if i.Class() == \"BackdropNode\":\n            i\['tile_color'].setValue(0x272727ff)\n            i\['note_font_color'].setValue(0xf9f9f9ff)\n\n        if i.Class() == \"StickyNote\":\n            i\['tile_color'].setValue(0x6fffff)\n            i\['note_font_color'].setValue(0x9fdeffff)" +STARTLINE}
+addUserKnob {26 _4 l "" +STARTLINE T "   "}
+addUserKnob {26 _1 l "" +STARTLINE T "selected only: dark backdrops, red pcomps and blue stickynotes"}
+addUserKnob {26 text_5 l "" +STARTLINE T "   "}
+addUserKnob {22 python_button_1 l "selected only" T "with nuke.root():\n    for i in nuke.selectedNodes():\n        if i.Class() == \"BackdropNode\":\n            i\['tile_color'].setValue(0x272727ff)\n            i\['note_font_color'].setValue(0xf9f9f9ff)\n        if i.Class() == \"StickyNote\":\n            i\['tile_color'].setValue(0x6fffff)\n            i\['note_font_color'].setValue(0x9fdeffff)" +STARTLINE}
 addUserKnob {26 ""}
 addUserKnob {26 space4 l "" +STARTLINE T "   "}
-addUserKnob {26 me l "" +STARTLINE T "ScriptControls v1.0 - (c) 2022 - Chris McCrowe - <a href=\"www.chrismccrowe.com\" style=\"color:#69a1fa;\">www.chrismccrowe.com</a>"}
+addUserKnob {26 me l "" +STARTLINE T "ScriptControls v1.2 - (c) 2024 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
 }
 NoOp {
 inputs 0
@@ -40,3 +76,23 @@ xpos 825
 ypos -479
 }
 end_group
+Dot {
+name Dot68
+selected true
+xpos 2518
+ypos 12180
+}
+set N2381e270 [stack 0]
+Dot {
+name Dot2
+selected true
+xpos 2408
+ypos 12300
+}
+push $N2381e270
+Dot {
+name Dot46
+selected true
+xpos 2628
+ypos 12300
+}

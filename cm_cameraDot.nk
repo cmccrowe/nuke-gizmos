@@ -5,8 +5,8 @@ note_font "Bitstream Vera Sans Bold"
 note_font_size 21
 note_font_color 0x5b5b5bff
 selected true
-xpos 2899
-ypos 18357
+xpos 3228
+ypos 18191
 hide_input true
 addUserKnob {20 controls l cameraDot}
 addUserKnob {4 cameraList l "connect camera" M {----------------------------------- ""}}
@@ -23,6 +23,7 @@ addUserKnob {26 text_1 l "" +STARTLINE T "   "}
 addUserKnob {22 openCameraProperties l "Open Properties" T "#Opens selected camera's properties panel\n\n\nn = nuke.thisNode() \ntry:\n    nuke.show(nuke.toNode(n\[\"cameraList\"].value()))\nexcept:\n    pass" +STARTLINE}
 addUserKnob {22 zoomToCamera l "Zoom to Camera" -STARTLINE T "#Zooms to selected camera\n\n\nn = nuke.thisNode()\ntry:\n    ni = nuke.toNode(n\[\"cameraList\"].value())\n    nuke.zoom(nuke.zoom(),(ni\[\"xpos\"].value(),ni\[\"ypos\"].value())) \nexcept:\n    nuke.message(\"Unable to zoom.\")"}
 addUserKnob {22 returnToDot l "Return to Dot" -STARTLINE T "#Returns to the dot\n\n\nn = nuke.thisNode()\ntry:\n    nuke.zoom(nuke.zoom(),(n\[\"xpos\"].value(),n\[\"ypos\"].value()))\nexcept:\n    pass"}
+addUserKnob {26 text_6 l "" +STARTLINE T "   "}
 addUserKnob {26 ""}
 addUserKnob {26 cameraData l "" +STARTLINE +INVISIBLE T "<span style=\"color:#FFD470;\">Camera Data</span>"}
 addUserKnob {26 text l "" +STARTLINE T "   "}

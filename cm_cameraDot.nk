@@ -25,7 +25,7 @@ addUserKnob {22 zoomToCamera l "Zoom to Camera" -STARTLINE T "#Zooms to selected
 addUserKnob {22 returnToDot l "Return to Dot" -STARTLINE T "#Returns to the dot\n\n\nn = nuke.thisNode()\ntry:\n    nuke.zoom(nuke.zoom(),(n\[\"xpos\"].value(),n\[\"ypos\"].value()))\nexcept:\n    pass"}
 addUserKnob {26 text_6 l "" +STARTLINE T "   "}
 addUserKnob {26 ""}
-addUserKnob {26 cameraData l "" +STARTLINE T "<span style=\"color:#FFD470;\">Camera Data</span>"}
+addUserKnob {26 cameraData l "" +STARTLINE T "<span style=\"color:#757575;\">Camera Data</span>"}
 addUserKnob {26 text l "" +STARTLINE T "   "}
 addUserKnob {26 focalLength l "Focal Length" T " "}
 addUserKnob {26 stop l T-Stop T " "}

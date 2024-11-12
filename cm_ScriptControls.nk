@@ -1,24 +1,24 @@
 BackdropNode {
 inputs 0
-name BackdropNode28
+name BackdropNode15
 tile_color 0x272727ff
 label "\n  ¯\\\\_(ツ)_/¯"
 note_font_size 100
 note_font_color 0xf9f9f9ff
 selected true
-xpos 2277
-ypos 11807
+xpos 1729
+ypos 39425
 bdwidth 507
 bdheight 578
 }
 Group {
 inputs 0
-name cm_ScriptControls
+name cm_ScriptControls1
 tile_color 0x34eb6e00
 label On
 selected true
-xpos 2490
-ypos 12067
+xpos 1942
+ypos 39683
 addUserKnob {20 controls l Controls}
 addUserKnob {26 text_14 l "Reads/Cache:       "}
 addUserKnob {26 text_15 l "" +STARTLINE T "   "}
@@ -28,8 +28,8 @@ addUserKnob {26 text_16 l "" +STARTLINE T "   "}
 addUserKnob {26 text_2 l "cm_Switches:        "}
 addUserKnob {26 space l "" +STARTLINE T "   "}
 addUserKnob {26 text l "" +STARTLINE T State:}
-addUserKnob {22 offBtn l Off -STARTLINE T "\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Off\")\nc.setValue(hex_color_to_int(\"eb4034\"))\n\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(0)\n\n"}
-addUserKnob {22 onBtn l On -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"On\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(1)"}
+addUserKnob {22 offBtn l Off -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Off\")\nc.setValue(hex_color_to_int(\"eb4034\"))\n\n\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(0)\n            i\['tile_color'].setValue(hex_color_to_int(\"eb4034\"))"}
+addUserKnob {22 onBtn l On -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"On\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\n\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(1)\n            i\['tile_color'].setValue(hex_color_to_int(\"34eb6e\"))"}
 addUserKnob {22 otherBtn l Other -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nk.setValue(\"Alt\")\nc.setValue(hex_color_to_int(\"3464eb\"))\n\n\ndef hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\nwith nuke.root():\n    for i in nuke.allNodes():\n        if i\['name'].value().startswith('cm_Switch'):\n            i.knob('which').setValue(2)"}
 addUserKnob {26 space2 l "" +STARTLINE T "  "}
 addUserKnob {26 sapce6 l "" +STARTLINE T "   "}
@@ -79,20 +79,20 @@ end_group
 Dot {
 name Dot68
 selected true
-xpos 2518
-ypos 12180
+xpos 1970
+ypos 39798
 }
-set N2381e270 [stack 0]
-Dot {
-name Dot2
-selected true
-xpos 2408
-ypos 12300
-}
-push $N2381e270
+set Nc3cefb30 [stack 0]
 Dot {
 name Dot46
 selected true
-xpos 2628
-ypos 12300
+xpos 1860
+ypos 39918
+}
+push $Nc3cefb30
+Dot {
+name Dot307
+selected true
+xpos 2080
+ypos 39918
 }

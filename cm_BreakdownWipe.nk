@@ -2,7 +2,7 @@ Group {
  inputs 2
  name cm_BreakdownWipe
  tile_color 0x10101ff
- note_font "DejaVu Sans Bold"
+ note_font "Verdana Bold"
  selected true
  xpos 66
  ypos -480
@@ -44,27 +44,27 @@ Group {
 set N4e80fc00 [stack 0]
  Dot {
   name Dot1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   xpos 883
   ypos 87
  }
 set Na661e000 [stack 0]
  Dot {
   name Dot2
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   xpos 766
   ypos 87
  }
  Dot {
   name Dot3
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   xpos 766
   ypos 801
  }
 push $Na661e000
  Dot {
   name Dot4
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1031
   ypos 87
@@ -83,7 +83,7 @@ push $Na661e000
   operation keep
   channels rgb
   name Remove1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 202
@@ -93,7 +93,7 @@ push $Na661e000
   area {{bbox.x-width} {"bbox.y-(width *2)"} {parent.Wipe_Position.wipe_position.x} {bbox.t+(width*2)}}
   softness {{parent.softness}}
   name Rectangle1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 235
@@ -103,14 +103,14 @@ push $Na661e000
   center {{parent.Wipe_Position.wipe_position} {parent.Wipe_Position.wipe_position}}
   shutteroffset centred
   name Transform1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 268
  }
  Dot {
   name Dot5
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1031
   ypos 319
@@ -119,7 +119,7 @@ set Na6646000 [stack 0]
  EdgeDetectWrapper {
   channels alpha
   name EdgeDetect1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 378
@@ -128,7 +128,7 @@ set Na6646000 [stack 0]
   channels alpha
   size -1
   name Dilate1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 412
@@ -137,7 +137,7 @@ set Na6646000 [stack 0]
   channels alpha
   size {{parent.thickness-1}}
   name Dilate2
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 446
@@ -156,7 +156,7 @@ set Na6646000 [stack 0]
   black_clamp false
   white_clamp true
   name Grade1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 504
@@ -174,7 +174,7 @@ set Na6646000 [stack 0]
  }
  Unpremult {
   name Unpremult1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 612
@@ -184,21 +184,21 @@ set Na6646000 [stack 0]
   white {{parent.color_rgba} {parent.color_rgba} {parent.color_rgba} {parent.color_rgba}}
   black_clamp false
   name Grade2
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 636
  }
  Premult {
   name Premult1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 660
  }
  Clamp {
   name Clamp1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   selected true
   xpos 1003
   ypos 684
@@ -222,7 +222,7 @@ push $Na661e000
   inputs 2+1
   bbox B
   name Merge1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   xpos 855
   ypos 321
  }
@@ -230,7 +230,7 @@ push $Na661e000
   inputs 2
   bbox B
   name Merge2
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   xpos 855
   ypos 757
   disable {{!parent.line}}
@@ -238,7 +238,7 @@ push $Na661e000
  CopyBBox {
   inputs 2
   name CopyBBox1
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   xpos 855
   ypos 803
  }
@@ -250,7 +250,7 @@ push $Na661e000
 push $N4e80fc00
  NoOp {
   name Wipe_Position
-  note_font "DejaVu Sans"
+  note_font "Verdana"
   xpos 706
   ypos -30
   addUserKnob {20 User}

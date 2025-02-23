@@ -1,0 +1,146 @@
+Group {
+name cm_NotEdgeBlur
+tile_color 0xda8745ff
+note_font Verdana
+selected true
+xpos 5084
+ypos -4612
+addUserKnob {20 User}
+addUserKnob {26 _2 l "" +STARTLINE T DontBlurEdges}
+addUserKnob {26 _1 l "" +STARTLINE T "   "}
+addUserKnob {7 bluramount l "blur amount"}
+bluramount 10
+addUserKnob {7 maxblur l "max blur"}
+maxblur 10
+addUserKnob {7 distance l "how far from edge?"}
+addUserKnob {7 softenDistance l "soften distance"}
+softenDistance 20
+addUserKnob {26 _3 l "" +STARTLINE T "   "}
+addUserKnob {26 ""}
+addUserKnob {26 cm l "" +STARTLINE T "NotEdgeBlur v1.0 - (c) 2024 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
+}
+Input {
+inputs 0
+name Input1
+xpos 816
+ypos -841
+}
+Dot {
+name Dot251
+xpos 844
+ypos -792
+}
+set N4cd31f10 [stack 0]
+Dot {
+name Dot6
+xpos 1000
+ypos -792
+}
+Rectangle {
+replace true
+area {{bbox.x+NoOp1.distanceFromEdge} {bbox.y+NoOp1.distanceFromEdge} {bbox.r-NoOp1.distanceFromEdge} {bbox.t-NoOp1.distanceFromEdge}}
+softness {{parent.softenDistance}}
+name InnerRectangle
+xpos 972
+ypos -724
+}
+set Nf0cb6390 [stack 0]
+Dot {
+name Dot2
+xpos 1000
+ypos -658
+}
+set N4cde5e80 [stack 0]
+push $N4cd31f10
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 depth.Z
+name Copy2
+xpos 816
+ypos -662
+}
+ZBlur {
+channels rgba
+math linear
+size {{parent.bluramount}}
+max_size {{parent.maxblur}}
+shape 1
+name ZBlur1
+xpos 816
+ypos -608
+}
+Dot {
+name Dot4
+xpos 844
+ypos -539
+}
+set N8d385e00 [stack 0]
+Dot {
+name Dot5
+xpos 706
+ypos -539
+}
+Dot {
+name Dot3
+xpos 706
+ypos -414
+}
+set N34062100 [stack 0]
+AdjBBox {
+numpixels {{ZBlur1.max_size}}
+name AdjBBox1
+xpos 678
+ypos -330
+}
+push $N34062100
+push $N8d385e00
+Remove {
+channels depth
+name Remove1
+xpos 816
+ypos -491
+}
+Copy {
+inputs 2
+from1 -depth.Z
+to1 -depth.Z
+channels depth
+name Copy1
+xpos 816
+ypos -424
+}
+CopyBBox {
+inputs 2
+name CopyBBox1
+xpos 816
+ypos -330
+disable {{!parent.copyBBox}}
+}
+Output {
+name Output1
+xpos 816
+ypos -216
+}
+push $Nf0cb6390
+push $N4cde5e80
+Viewer {
+inputs 2
+frame_range 1001-1222
+overscan 500
+center_fstop 0
+viewerProcess DigiSX_WetaP3
+name Viewer1
+xpos 1392
+ypos -446
+}
+NoOp {
+inputs 0
+name NoOp1
+xpos 1075
+ypos -860
+addUserKnob {20 User l Controls}
+addUserKnob {7 distanceFromEdge l "distance from edge" R 0 500}
+distanceFromEdge {{parent.distance}}
+}
+end_group

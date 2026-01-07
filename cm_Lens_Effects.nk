@@ -2,10 +2,10 @@ set cut_paste_input [stack 0]
 version 15.1 v5
 Group {
  inputs 0
- name Mask_Control1
+ name Mask_Control
  selected true
- xpos 301
- ypos -207
+ xpos -189
+ ypos -231
  addUserKnob {20 maskControl l Control}
  addUserKnob {7 maskSize l size R 0 500}
  maskSize 500
@@ -90,8 +90,8 @@ Group {
  knobChanged lensEffectsShowHide.showHide()
  tile_color 0x6c4dffff
  selected true
- xpos -40
- ypos -207
+ xpos -37
+ ypos -203
  addUserKnob {20 User l Astigmatism}
  addUserKnob {26 text_3 l "" +STARTLINE T <h1>Astigmatism</h1>}
  addUserKnob {26 text_7 l "" +STARTLINE T "   "}
@@ -133,8 +133,8 @@ Group {
  addUserKnob {26 ""}
  addUserKnob {26 text_2 l "" +STARTLINE T "   "}
  addUserKnob {26 text l "" +STARTLINE T "Lens Effects v1.0 - (c) 2032 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
- addUserKnob {20 ColorSmear l "Color Smear"}
- addUserKnob {26 text_15 l "" +STARTLINE T "<h1>Color Smear</h1>"}
+ addUserKnob {20 ChromaSmear l "Chroma Smear"}
+ addUserKnob {26 text_15 l "" +STARTLINE T "<h1>Chroma Smear</h1>"}
  addUserKnob {26 text_16 l "" +STARTLINE T "   "}
  addUserKnob {6 enableColorSmear l Enable +STARTLINE}
  enableColorSmear true
@@ -144,7 +144,7 @@ Group {
  addUserKnob {7 double_2 l green R 0.99 1.01}
  double_2 1
  addUserKnob {7 double_1 l blue R 0.99 1.01}
- double_1 1.01
+ double_1 1.00015
  addUserKnob {26 text_17 l "" +STARTLINE T "    "}
  addUserKnob {20 vignette l Vignette}
  addUserKnob {26 text_20 l "" +STARTLINE T <h1>Vignette</h1>}
@@ -160,71 +160,86 @@ Group {
  addUserKnob {7 vignetteMix l Mix}
  vignetteMix 1
 }
+ StickyNote {
+  inputs 0
+  name StickyNote1
+  tile_color 0x2c67ffff
+  label Astigmatism
+  note_font_size 61
+  xpos -1599
+  ypos 259
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote2
+  tile_color 0x2c67ffff
+  label "Chroma Smear"
+  note_font_size 61
+  xpos -1723
+  ypos -1212
+ }
+ StickyNote {
+  inputs 0
+  name StickyNote3
+  tile_color 0x2c67ffff
+  label Vignette
+  note_font_size 61
+  xpos -1609
+  ypos 1598
+ }
  Input {
   inputs 0
   name Input1
   label img
-  xpos -927
-  ypos -1095
+  xpos -928
+  ypos -2424
  }
  Reformat {
   resize none
   pbb true
   name Reformat1
-  xpos -927
-  ypos -923
+  xpos -928
+  ypos -2344
  }
  Dot {
-  name Dot1
-  xpos -899
-  ypos -817
+  name Dot25
+  xpos -900
+  ypos -2174
  }
-set Nec02ac00 [stack 0]
- Dot {
-  name Dot8
-  xpos -1009
-  ypos -817
- }
-set Nec02b000 [stack 0]
- Dot {
-  name Dot10
-  xpos -1152
-  ypos -817
- }
-set Nec02b400 [stack 0]
+set N30647800 [stack 0]
  Dot {
   name Dot2
-  xpos -1854
-  ypos -817
+  xpos -1895
+  ypos -2174
  }
  Dot {
   name Dot3
   xpos -1854
-  ypos 1709
+  ypos 2175
  }
  Input {
   inputs 0
   name mask
-  xpos 268
-  ypos -1138
+  xpos 274
+  ypos -2323
   number 1
  }
  Dot {
-  name Dot18
-  xpos 302
-  ypos -657
- }
-set Neab2c400 [stack 0]
- Dot {
   name Dot19
-  xpos 302
-  ypos -196
+  xpos 301
+  ypos -1708
  }
 set Neab2c800 [stack 0]
  Dot {
+  name Dot18
+  xpos 301
+  ypos 204
+ }
+set Neab2c400 [stack 0]
+ Dot {
   name Dot23
   xpos 302
-  ypos 1146
+  ypos 1667
  }
  Grade {
   channels rgba
@@ -232,343 +247,65 @@ set Neab2c800 [stack 0]
   white_clamp true
   name Grade2
   xpos -337
-  ypos 1149
+  ypos 1670
  }
  Blur {
   size {{parent.blurVignette}}
   name Blur2
   xpos -460
-  ypos 1143
+  ypos 1664
  }
 push $Neab2c800
  Invert {
   name Invert2
-  xpos -113
-  ypos -199
- }
-set Neab2d800 [stack 0]
-push $Nec02b400
- Dot {
-  name Dot7
-  xpos -1152
-  ypos -52
- }
-push $Nec02b000
- Group {
-  name Astigmatism
-  tile_color 0x6c4dffff
-  note_font_color 0xffffffff
-  xpos -1037
-  ypos -566
-  addUserKnob {20 Astigmatism}
-  addUserKnob {41 channels T Tangental1.channels}
-  addUserKnob {26 ""}
-  addUserKnob {14 Tangental R 0 100}
-  Tangental 2.7
-  addUserKnob {7 Sagittal R 0 0.5}
-  Sagittal 0.086
-  addUserKnob {7 Anamorphic}
-  Anamorphic 1
- }
-  Input {
-   inputs 0
-   name Input1
-   xpos 0
-   ypos -30
-  }
-  Dot {
-   name Dot1
-   xpos 28
-   ypos 28
-  }
-set Neb6fc400 [stack 0]
-  Dot {
-   name Dot2
-   xpos 238
-   ypos 28
-  }
-  Dot {
-   name Dot3
-   xpos 238
-   ypos 285
-  }
-push $Neb6fc400
-  GodRays {
-   channels rgba
-   translate {5 0}
-   scale {{1+(parent.Tangental/1000)}}
-   center {{input.width/2} {input.height/2}}
-   name Tangental1
-   xpos 0
-   ypos 92
-  }
-  GodRays {
-   channels {{{parent.Tangental1.channels}}}
-   scale {{1-(parent.Tangental/1000)}}
-   center {{input.width/2} {input.height/2}}
-   name Tangental2
-   xpos 0
-   ypos 128
-  }
-  GodRays {
-   channels {{{parent.Tangental1.channels}}}
-   rotate {{parent.Sagittal}}
-   skew {{parent.Anamorphic/40}}
-   center {{input.width/2} {input.height/2}}
-   name SagittalACW
-   xpos 0
-   ypos 165
-  }
-  GodRays {
-   channels {{{parent.Tangental1.channels}}}
-   rotate {{-parent.Sagittal}}
-   skew {{-parent.Anamorphic/40}}
-   center {{input.width/2} {input.height/2}}
-   name SagittalCW
-   xpos 0
-   ypos 202
-  }
-  CopyBBox {
-   inputs 2
-   name CopyBBox1
-   xpos 0
-   ypos 288
-  }
-  Output {
-   name Output1
-   xpos 0
-   ypos 384
-  }
- end_group
- Dot {
-  name Dot9
-  xpos -1009
-  ypos -227
- }
-push $Neab2c400
- AddChannels {
-  channels alpha
-  name AddChannels1
-  xpos -55
-  ypos -660
- }
- Invert {
-  name Invert1
-  xpos -55
-  ypos -624
-  disable {{!parent.invert_mask}}
- }
- Grade {
-  channels rgba
-  gamma {{parent.gamma_mask}}
-  name Grade1
-  xpos -55
-  ypos -588
- }
-set Neaed5400 [stack 0]
-push $Neaed5400
- Blur {
-  inputs 1+1
-  channels rgba
-  size {{parent.blur_mask}}
-  name Blur1
-  xpos -55
-  ypos -564
- }
- Constant {
-  inputs 0
-  channels rgb
-  name Constant1
-  xpos -760
-  ypos -588
- }
-push $Nec02ac00
- Dot {
-  name Dot5
-  xpos -598
-  ypos -817
- }
- Group {
-  name STMAP_GENERATOR
-  tile_color 0xf9811fff
-  xpos -626
-  ypos -741
-  addUserKnob {20 mainTab l STMAP}
-  addUserKnob {7 overscanSlider l Overscan R 0 1000}
-  overscanSlider 90
- }
-  Input {
-   inputs 0
-   name Input1
-   xpos 400
-   ypos 76
-  }
-set Nebad6400 [stack 0]
-  Shuffle {
-   red black
-   green black
-   blue black
-   alpha black
-   name Shuffle1
-   label "Original 1-1 map"
-   xpos 400
-   ypos 152
-  }
-  AdjBBox {
-   numpixels {{parent.overscanSlider}}
-   name AdjBBox1
-   xpos 400
-   ypos 214
-  }
-  Expression {
-   temp_name0 r
-   temp_expr0 x
-   temp_name1 g
-   temp_expr1 y
-   expr0 (x+0.5)/width
-   expr1 " (y+0.5)/height"
-   name Expression1
-   xpos 400
-   ypos 258
-  }
-  Shuffle {
-   alpha white
-   name Shuffle7
-   xpos 400
-   ypos 302
-  }
-  Output {
-   name Output1
-   xpos 400
-   ypos 352
-  }
-push $Nebad6400
-  Viewer {
-   frame_range 1001-1076
-   overscan 500
-   center_fstop 0
-   monitorOutNDISenderName "NukeX - untitled - Viewer1"
-   name Viewer1
-   xpos 730
-   ypos 328
-  }
- end_group
-set Neba4d600 [stack 0]
- Transform {
-  rotate 90
-  center {{input.width/2} {input.height/2}}
-  black_outside false
-  name Transform1
-  xpos -681
-  ypos -704
- }
-push $Neba4d600
- Transform {
-  rotate -90
-  center {{input.width/2} {input.height/2}}
-  black_outside false
-  name Transform2
-  xpos -575
-  ypos -704
- }
- Merge2 {
-  inputs 2
-  operation max
-  name Merge1
-  xpos -622
-  ypos -664
- }
- Expression {
-  expr0 r*input.width/2
-  expr1 g*input.height/2
-  name Expression1
-  xpos -622
-  ypos -619
- }
- Keymix {
-  inputs 3
-  name Keymix1
-  xpos -622
-  ypos -570
+  xpos -111
+  ypos -1711
  }
  Dot {
-  name Dot6
-  xpos -594
-  ypos -453
+  name Dot24
+  xpos -560
+  ypos -1708
  }
-push $Nec02ac00
- ShuffleCopy {
-  inputs 2
-  red red
-  green green
-  blue black
-  alpha black
-  out motion
-  name ShuffleCopy1
-  xpos -927
-  ypos -450
- }
- VectorBlur {
-  channels rgba
-  uv motion
-  scale {{parent.anamorphic_astigmatism} {parent.vertical_astigmatism}}
-  grow_bbox 73.5
-  name VectorBlur2
-  xpos -927
-  ypos -336
- }
- Switch {
-  inputs 2
-  which {{parent.method_pulldown}}
-  name Switch1
-  xpos -927
-  ypos -224
- }
- Switch {
-  inputs 2
-  which {{!parent.enableAstigmatism}}
-  name Switch2
-  xpos -926
-  ypos -49
- }
+set Nb1996400 [stack 0]
+push $N30647800
  Dot {
   name Dot16
   xpos -900
-  ypos 75
+  ypos -1437
  }
 set Neff26400 [stack 0]
  Dot {
   name Dot4
-  xpos -899
-  ypos 191
+  xpos -900
+  ypos -1321
  }
 set Neff26800 [stack 0]
  Dot {
   name Dot11
-  xpos -700
-  ypos 191
+  xpos -705
+  ypos -1321
  }
 set Neff26c00 [stack 0]
  Dot {
   name Dot12
-  xpos -502
-  ypos 191
+  xpos -507
+  ypos -1321
  }
  Shuffle2 {
   fromInput1 {{0} B}
   fromInput2 {{0} B}
   mappings "4 rgba.alpha 0 3 rgba.alpha 0 3 black -1 -1 rgba.green 0 1 black -1 -1 rgba.red 0 0 rgba.blue 0 2 rgba.blue 0 2"
   name Shuffle3
-  xpos -530
-  ypos 260
+  xpos -535
+  ypos -1252
  }
  Group {
   inputs 2
   name CM_STMAP_WARP2
   tile_color 0xc96abfff
   note_font Verdana
-  xpos -530
-  ypos 351
+  xpos -535
+  ypos -1161
   addUserKnob {20 Setting_Tab l STMAP_Warp t Settings}
   addUserKnob {26 text_1 l Transform}
   addUserKnob {41 translate T Transform7.translate}
@@ -764,26 +501,26 @@ push $Neff97400
  end_group
  Dot {
   name Dot13
-  xpos -502
-  ypos 555
+  xpos -507
+  ypos -957
  }
-push $Neab2d800
+push $Nb1996400
 push $Neff26c00
  Shuffle2 {
   fromInput1 {{0} B}
   fromInput2 {{0} B}
   mappings "4 black -1 -1 rgba.blue 0 2 rgba.alpha 0 3 rgba.alpha 0 3 black -1 -1 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1"
   name Shuffle2
-  xpos -728
-  ypos 266
+  xpos -733
+  ypos -1246
  }
  Group {
   inputs 2
   name CM_STMAP_WARP1
   tile_color 0xc96abfff
   note_font Verdana
-  xpos -728
-  ypos 349
+  xpos -733
+  ypos -1163
   addUserKnob {20 Setting_Tab l STMAP_Warp t Settings}
   addUserKnob {26 text_1 l Transform}
   addUserKnob {41 translate T Transform7.translate}
@@ -979,26 +716,26 @@ push $Nf0071800
  end_group
  Dot {
   name Dot14
-  xpos -700
-  ypos 421
+  xpos -705
+  ypos -1091
  }
-push $Neab2d800
+push $Nb1996400
 push $Neff26800
  Shuffle2 {
   fromInput1 {{0} B}
   fromInput2 {{0} B}
   mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.alpha 0 3 rgba.alpha 0 3 black -1 -1 rgba.green 0 1 black -1 -1 rgba.blue 0 2"
   name Shuffle1
-  xpos -927
-  ypos 266
+  xpos -928
+  ypos -1246
  }
  Group {
   inputs 2
   name CM_STMAP_WARP
   tile_color 0xc96abfff
   note_font Verdana
-  xpos -927
-  ypos 354
+  xpos -928
+  ypos -1158
   addUserKnob {20 Setting_Tab l STMAP_Warp t Settings}
   addUserKnob {26 text_1 l Transform}
   addUserKnob {41 translate T Transform7.translate}
@@ -1197,40 +934,339 @@ push $Nf0149c00
   from0 rgba.green
   to0 rgba.green
   name Copy1
-  xpos -927
-  ypos 418
+  xpos -928
+  ypos -1094
  }
  Copy {
   inputs 2
   from0 rgba.blue
   to0 rgba.blue
   name Copy2
-  selected true
-  xpos -927
-  ypos 552
+  xpos -928
+  ypos -960
  }
 push $Neff26400
  Dot {
   name Dot17
-  xpos -1134
-  ypos 75
+  xpos -1139
+  ypos -1437
  }
  Dot {
   name Dot15
-  xpos -1134
-  ypos 803
+  xpos -1139
+  ypos -709
  }
  Switch {
   inputs 2
   which {{parent.enableColorSmear}}
   name Switch3
+  xpos -928
+  ypos -706
+ }
+ Dot {
+  name Dot1
+  xpos -900
+  ypos 44
+ }
+set Nec02ac00 [stack 0]
+ Dot {
+  name Dot8
+  xpos -1010
+  ypos 44
+ }
+set Nec02b000 [stack 0]
+ Dot {
+  name Dot10
+  xpos -1153
+  ypos 44
+ }
+ Dot {
+  name Dot7
+  xpos -1153
+  ypos 809
+ }
+push $Nec02b000
+ Group {
+  name Astigmatism
+  tile_color 0x6c4dffff
+  note_font_color 0xffffffff
+  xpos -1038
+  ypos 295
+  addUserKnob {20 Astigmatism}
+  addUserKnob {41 channels T Tangental1.channels}
+  addUserKnob {26 ""}
+  addUserKnob {14 Tangental R 0 100}
+  Tangental 2.7
+  addUserKnob {7 Sagittal R 0 0.5}
+  Sagittal 0.086
+  addUserKnob {7 Anamorphic}
+  Anamorphic 1
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos 0
+   ypos -30
+  }
+  Dot {
+   name Dot1
+   xpos 28
+   ypos 28
+  }
+set Neb6fc400 [stack 0]
+  Dot {
+   name Dot2
+   xpos 238
+   ypos 28
+  }
+  Dot {
+   name Dot3
+   xpos 238
+   ypos 285
+  }
+push $Neb6fc400
+  GodRays {
+   channels rgba
+   translate {5 0}
+   scale {{1+(parent.Tangental/1000)}}
+   center {{input.width/2} {input.height/2}}
+   name Tangental1
+   xpos 0
+   ypos 92
+  }
+  GodRays {
+   channels {{{parent.Tangental1.channels}}}
+   scale {{1-(parent.Tangental/1000)}}
+   center {{input.width/2} {input.height/2}}
+   name Tangental2
+   xpos 0
+   ypos 128
+  }
+  GodRays {
+   channels {{{parent.Tangental1.channels}}}
+   rotate {{parent.Sagittal}}
+   skew {{parent.Anamorphic/40}}
+   center {{input.width/2} {input.height/2}}
+   name SagittalACW
+   xpos 0
+   ypos 165
+  }
+  GodRays {
+   channels {{{parent.Tangental1.channels}}}
+   rotate {{-parent.Sagittal}}
+   skew {{-parent.Anamorphic/40}}
+   center {{input.width/2} {input.height/2}}
+   name SagittalCW
+   xpos 0
+   ypos 202
+  }
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos 0
+   ypos 288
+  }
+  Output {
+   name Output1
+   xpos 0
+   ypos 384
+  }
+ end_group
+ Dot {
+  name Dot9
+  xpos -1010
+  ypos 634
+ }
+push $Neab2c400
+ AddChannels {
+  channels alpha
+  name AddChannels1
+  xpos -56
+  ypos 201
+ }
+ Invert {
+  name Invert1
+  xpos -56
+  ypos 237
+  disable {{!parent.invert_mask}}
+ }
+ Grade {
+  channels rgba
+  gamma {{parent.gamma_mask}}
+  name Grade1
+  xpos -56
+  ypos 273
+ }
+set Neaed5400 [stack 0]
+push $Neaed5400
+ Blur {
+  inputs 1+1
+  channels rgba
+  size {{parent.blur_mask}}
+  name Blur1
+  xpos -56
+  ypos 297
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  name Constant1
+  xpos -761
+  ypos 273
+ }
+push $Nec02ac00
+ Dot {
+  name Dot5
+  xpos -599
+  ypos 44
+ }
+ Group {
+  name STMAP_GENERATOR
+  tile_color 0xf9811fff
+  xpos -627
+  ypos 120
+  addUserKnob {20 mainTab l STMAP}
+  addUserKnob {7 overscanSlider l Overscan R 0 1000}
+  overscanSlider 90
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos 400
+   ypos 76
+  }
+set Nebad6400 [stack 0]
+  Shuffle {
+   red black
+   green black
+   blue black
+   alpha black
+   name Shuffle1
+   label "Original 1-1 map"
+   xpos 400
+   ypos 152
+  }
+  AdjBBox {
+   numpixels {{parent.overscanSlider}}
+   name AdjBBox1
+   xpos 400
+   ypos 214
+  }
+  Expression {
+   temp_name0 r
+   temp_expr0 x
+   temp_name1 g
+   temp_expr1 y
+   expr0 (x+0.5)/width
+   expr1 " (y+0.5)/height"
+   name Expression1
+   xpos 400
+   ypos 258
+  }
+  Shuffle {
+   alpha white
+   name Shuffle7
+   xpos 400
+   ypos 302
+  }
+  Output {
+   name Output1
+   xpos 400
+   ypos 352
+  }
+push $Nebad6400
+  Viewer {
+   frame_range 1001-1076
+   overscan 500
+   center_fstop 0
+   monitorOutNDISenderName "NukeX - untitled - Viewer1"
+   name Viewer1
+   xpos 730
+   ypos 328
+  }
+ end_group
+set Neba4d600 [stack 0]
+ Transform {
+  rotate 90
+  center {{input.width/2} {input.height/2}}
+  black_outside false
+  name Transform1
+  xpos -682
+  ypos 157
+ }
+push $Neba4d600
+ Transform {
+  rotate -90
+  center {{input.width/2} {input.height/2}}
+  black_outside false
+  name Transform2
+  xpos -576
+  ypos 157
+ }
+ Merge2 {
+  inputs 2
+  operation max
+  name Merge1
+  xpos -623
+  ypos 197
+ }
+ Expression {
+  expr0 r*input.width/2
+  expr1 g*input.height/2
+  name Expression1
+  xpos -623
+  ypos 242
+ }
+ Keymix {
+  inputs 3
+  name Keymix1
+  xpos -623
+  ypos 291
+ }
+ Dot {
+  name Dot6
+  xpos -595
+  ypos 408
+ }
+push $Nec02ac00
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue black
+  alpha black
+  out motion
+  name ShuffleCopy1
+  xpos -928
+  ypos 411
+ }
+ VectorBlur {
+  channels rgba
+  uv motion
+  scale {{parent.anamorphic_astigmatism} {parent.vertical_astigmatism}}
+  grow_bbox 73.5
+  name VectorBlur2
+  xpos -928
+  ypos 525
+ }
+ Switch {
+  inputs 2
+  which {{parent.method_pulldown}}
+  name Switch1
+  xpos -928
+  ypos 637
+ }
+ Switch {
+  inputs 2
+  which {{!parent.enableAstigmatism}}
+  name Switch2
   xpos -927
-  ypos 806
+  ypos 812
  }
  Dot {
   name Dot20
   xpos -899
-  ypos 971
+  ypos 1492
  }
 set Nf01f4c00 [stack 0]
  Merge2 {
@@ -1239,35 +1275,35 @@ set Nf01f4c00 [stack 0]
   mix {{parent.vignetteMix}}
   name Merge2
   xpos -927
-  ypos 1149
+  ypos 1670
  }
 push $Nf01f4c00
  Dot {
   name Dot22
   xpos -1130
-  ypos 971
+  ypos 1492
  }
  Dot {
   name Dot21
   xpos -1130
-  ypos 1613
+  ypos 1773
  }
  Switch {
   inputs 2
   which {{parent.enableVignette}}
   name Switch4
   xpos -927
-  ypos 1616
+  ypos 1776
  }
  CopyBBox {
   inputs 2
   name CopyBBox1
   xpos -927
-  ypos 1712
+  ypos 2178
  }
  Output {
   name Output1
   xpos -927
-  ypos 1817
+  ypos 2413
  }
 end_group

@@ -120,7 +120,7 @@ Group {
  addUserKnob {20 endGroup n -1}
  addUserKnob {26 ""}
  addUserKnob {26 text_2 l "" +STARTLINE T "   "}
- addUserKnob {26 text l "" +STARTLINE T "Astigmatism v1.0 - (c) 2032 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
+ addUserKnob {26 text l "" +STARTLINE T "Lens Effects v1.0 - (c) 2032 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
  addUserKnob {20 ColorSmear l "Color Smear"}
  addUserKnob {26 text_15 l "" +STARTLINE T "<h1>Color Smear</h1>"}
  addUserKnob {26 text_16 l "" +STARTLINE T "   "}

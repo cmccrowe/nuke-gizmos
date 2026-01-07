@@ -1,9 +1,11 @@
+set cut_paste_input [stack 0]
+version 15.1 v5
 Group {
  inputs 0
  name Mask_Control1
  selected true
- xpos 55
- ypos -382
+ xpos 301
+ ypos -207
  addUserKnob {20 maskControl l Control}
  addUserKnob {7 maskSize l size R 0 500}
  maskSize 500
@@ -13,28 +15,29 @@ Group {
   channels rgb
   name Constant1
   xpos -588
-  ypos -170
+  ypos -193
  }
-set Nc17b2000 [stack 0]
+set N306fc00 [stack 0]
  Radial {
   area {{0-parent.maskSize} {0-parent.maskSize} {"input.width + parent.maskSize"} {"input.height + parent.maskSize"}}
   name Radial1
   xpos -588
-  ypos -27
+  ypos -30
  }
  Transform {
   scale 1.2
-  center {960 540}
+  center {{input.width/2} {input.height/2}}
   name Transform1
   xpos -588
-  ypos -3
+  ypos 2
  }
+set N306f400 [stack 0]
  Output {
   name Output1
   xpos -588
   ypos 73
  }
-push $Nc17b2000
+push $N306fc00
  Group {
   name Overscan_Crop
   tile_color 0xbe81caff
@@ -70,16 +73,25 @@ push $Nc17b2000
    ypos -538
   }
  end_group
+push $N306f400
+ Viewer {
+  frame_range 1001-1100
+  monitorOutNDISenderName "NukeX - untitled - Viewer1"
+  monitorOutOutputTransform rec709
+  name Viewer1
+  xpos -588
+  ypos -121
+ }
 end_group
 push 0
 Group {
  inputs 2
  name cm_Lens_Effects
- knobChanged showHide.showHide()
+ knobChanged lensEffectsShowHide.showHide()
  tile_color 0x6c4dffff
  selected true
- xpos -181
- ypos -368
+ xpos -40
+ ypos -207
  addUserKnob {20 User l Astigmatism}
  addUserKnob {26 text_3 l "" +STARTLINE T <h1>Astigmatism</h1>}
  addUserKnob {26 text_7 l "" +STARTLINE T "   "}
@@ -128,11 +140,11 @@ Group {
  enableColorSmear true
  addUserKnob {26 text_18 l "" +STARTLINE T "   "}
  addUserKnob {7 double l red R 0.99 1.01}
- double 1.0032
- addUserKnob {7 double_1 l blue R 0.99 1.01}
- double_1 1
+ double 1.00015
  addUserKnob {7 double_2 l green R 0.99 1.01}
- double_2 1.0032
+ double_2 1
+ addUserKnob {7 double_1 l blue R 0.99 1.01}
+ double_1 1.01
  addUserKnob {26 text_17 l "" +STARTLINE T "    "}
  addUserKnob {20 vignette l Vignette}
  addUserKnob {26 text_20 l "" +STARTLINE T <h1>Vignette</h1>}
@@ -167,19 +179,19 @@ Group {
   xpos -899
   ypos -817
  }
-set Nbf1c00 [stack 0]
+set Nec02ac00 [stack 0]
  Dot {
   name Dot8
   xpos -1009
   ypos -817
  }
-set Nbf0c00 [stack 0]
+set Nec02b000 [stack 0]
  Dot {
   name Dot10
   xpos -1152
   ypos -817
  }
-set N4af0c00 [stack 0]
+set Nec02b400 [stack 0]
  Dot {
   name Dot2
   xpos -1854
@@ -202,13 +214,13 @@ set N4af0c00 [stack 0]
   xpos 302
   ypos -657
  }
-set N31f4e400 [stack 0]
+set Neab2c400 [stack 0]
  Dot {
   name Dot19
   xpos 302
   ypos -196
  }
-set Nc5ed000 [stack 0]
+set Neab2c800 [stack 0]
  Dot {
   name Dot23
   xpos 302
@@ -228,20 +240,20 @@ set Nc5ed000 [stack 0]
   xpos -460
   ypos 1143
  }
-push $Nc5ed000
+push $Neab2c800
  Invert {
   name Invert2
   xpos -113
   ypos -199
  }
-set N1758d800 [stack 0]
-push $N4af0c00
+set Neab2d800 [stack 0]
+push $Nec02b400
  Dot {
   name Dot7
   xpos -1152
   ypos -52
  }
-push $Nbf0c00
+push $Nec02b000
  Group {
   name Astigmatism
   tile_color 0x6c4dffff
@@ -269,7 +281,7 @@ push $Nbf0c00
    xpos 28
    ypos 28
   }
-set Nd163e400 [stack 0]
+set Neb6fc400 [stack 0]
   Dot {
    name Dot2
    xpos 238
@@ -280,7 +292,7 @@ set Nd163e400 [stack 0]
    xpos 238
    ypos 285
   }
-push $Nd163e400
+push $Neb6fc400
   GodRays {
    channels rgba
    translate {5 0}
@@ -333,7 +345,7 @@ push $Nd163e400
   xpos -1009
   ypos -227
  }
-push $N31f4e400
+push $Neab2c400
  AddChannels {
   channels alpha
   name AddChannels1
@@ -353,8 +365,8 @@ push $N31f4e400
   xpos -55
   ypos -588
  }
-set Nea28800 [stack 0]
-push $Nea28800
+set Neaed5400 [stack 0]
+push $Neaed5400
  Blur {
   inputs 1+1
   channels rgba
@@ -370,7 +382,7 @@ push $Nea28800
   xpos -760
   ypos -588
  }
-push $Nbf1c00
+push $Nec02ac00
  Dot {
   name Dot5
   xpos -598
@@ -391,7 +403,7 @@ push $Nbf1c00
    xpos 400
    ypos 76
   }
-set N156c5400 [stack 0]
+set Nebad6400 [stack 0]
   Shuffle {
    red black
    green black
@@ -430,7 +442,7 @@ set N156c5400 [stack 0]
    xpos 400
    ypos 352
   }
-push $N156c5400
+push $Nebad6400
   Viewer {
    frame_range 1001-1076
    overscan 500
@@ -441,7 +453,7 @@ push $N156c5400
    ypos 328
   }
  end_group
-set N43c0b700 [stack 0]
+set Neba4d600 [stack 0]
  Transform {
   rotate 90
   center {{input.width/2} {input.height/2}}
@@ -450,7 +462,7 @@ set N43c0b700 [stack 0]
   xpos -681
   ypos -704
  }
-push $N43c0b700
+push $Neba4d600
  Transform {
   rotate -90
   center {{input.width/2} {input.height/2}}
@@ -484,7 +496,7 @@ push $N43c0b700
   xpos -594
   ypos -453
  }
-push $Nbf1c00
+push $Nec02ac00
  ShuffleCopy {
   inputs 2
   red red
@@ -524,19 +536,19 @@ push $Nbf1c00
   xpos -900
   ypos 75
  }
-set Nb9d23400 [stack 0]
+set Neff26400 [stack 0]
  Dot {
   name Dot4
   xpos -899
   ypos 191
  }
-set N4a7fb400 [stack 0]
+set Neff26800 [stack 0]
  Dot {
   name Dot11
   xpos -700
   ypos 191
  }
-set Nccaae400 [stack 0]
+set Neff26c00 [stack 0]
  Dot {
   name Dot12
   xpos -502
@@ -613,7 +625,7 @@ set Nccaae400 [stack 0]
    xpos 175
    ypos -240
   }
-set N90e76400 [stack 0]
+set Neff68c00 [stack 0]
   Dot {
    name Dot1
    xpos 303
@@ -646,17 +658,17 @@ set N90e76400 [stack 0]
    xpos 275
    ypos -74
   }
-set Na362f000 [stack 0]
+set Neff69c00 [stack 0]
   TransformMasked {
    inputs 1+1
-   scale {{parent.parent.double_2}}
+   scale {{parent.parent.double_1}}
    center {{input.width/2} {input.height/2}}
    name Transform7
    note_font "Bitstream Vera Sans"
    xpos 437
    ypos -79
   }
-push $Na362f000
+push $Neff69c00
   Dissolve {
    inputs 2
    which 1
@@ -670,7 +682,7 @@ push $Na362f000
    xpos 303
    ypos 7
   }
-push $N90e76400
+push $Neff68c00
   STMap {
    inputs 2
    uv rgb
@@ -700,7 +712,7 @@ push $N90e76400
     xpos 400
     ypos 98
    }
-set Nfd793c00 [stack 0]
+set Neff97400 [stack 0]
    Shuffle {
     red black
     green black
@@ -739,7 +751,7 @@ set Nfd793c00 [stack 0]
     xpos 400
     ypos 352
    }
-push $Nfd793c00
+push $Neff97400
    Viewer {
     frame_range 1001-1076
     overscan 500
@@ -755,8 +767,8 @@ push $Nfd793c00
   xpos -502
   ypos 555
  }
-push $N1758d800
-push $Nccaae400
+push $Neab2d800
+push $Neff26c00
  Shuffle2 {
   fromInput1 {{0} B}
   fromInput2 {{0} B}
@@ -828,7 +840,7 @@ push $Nccaae400
    xpos 175
    ypos -240
   }
-set Naeb52400 [stack 0]
+set Nf0041000 [stack 0]
   Dot {
    name Dot1
    xpos 303
@@ -861,17 +873,17 @@ set Naeb52400 [stack 0]
    xpos 275
    ypos -74
   }
-set N424b2400 [stack 0]
+set Nf0070000 [stack 0]
   TransformMasked {
    inputs 1+1
-   scale {{parent.parent.double_1}}
+   scale {{parent.parent.double_2}}
    center {{input.width/2} {input.height/2}}
    name Transform7
    note_font "Bitstream Vera Sans"
    xpos 437
    ypos -80
   }
-push $N424b2400
+push $Nf0070000
   Dissolve {
    inputs 2
    which 1
@@ -885,7 +897,7 @@ push $N424b2400
    xpos 303
    ypos 7
   }
-push $Naeb52400
+push $Nf0041000
   STMap {
    inputs 2
    uv rgb
@@ -915,7 +927,7 @@ push $Naeb52400
     xpos 400
     ypos 98
    }
-set N206fb000 [stack 0]
+set Nf0071800 [stack 0]
    Shuffle {
     red black
     green black
@@ -954,7 +966,7 @@ set N206fb000 [stack 0]
     xpos 400
     ypos 352
    }
-push $N206fb000
+push $Nf0071800
    Viewer {
     frame_range 1001-1076
     overscan 500
@@ -970,8 +982,8 @@ push $N206fb000
   xpos -700
   ypos 421
  }
-push $N1758d800
-push $N4a7fb400
+push $Neab2d800
+push $Neff26800
  Shuffle2 {
   fromInput1 {{0} B}
   fromInput2 {{0} B}
@@ -1043,7 +1055,7 @@ push $N4a7fb400
    xpos 175
    ypos -240
   }
-set N10d0b400 [stack 0]
+set Nf0123400 [stack 0]
   Dot {
    name Dot1
    xpos 303
@@ -1076,7 +1088,7 @@ set N10d0b400 [stack 0]
    xpos 275
    ypos -74
   }
-set Nff91f400 [stack 0]
+set Nf0148400 [stack 0]
   TransformMasked {
    inputs 1+1
    scale {{parent.parent.double x1003 0}}
@@ -1086,7 +1098,7 @@ set Nff91f400 [stack 0]
    xpos 437
    ypos -80
   }
-push $Nff91f400
+push $Nf0148400
   Dissolve {
    inputs 2
    which 1
@@ -1100,7 +1112,7 @@ push $Nff91f400
    xpos 303
    ypos 7
   }
-push $N10d0b400
+push $Nf0123400
   STMap {
    inputs 2
    uv rgb
@@ -1130,7 +1142,7 @@ push $N10d0b400
     xpos 400
     ypos 98
    }
-set N35892400 [stack 0]
+set Nf0149c00 [stack 0]
    Shuffle {
     red black
     green black
@@ -1169,7 +1181,7 @@ set N35892400 [stack 0]
     xpos 400
     ypos 352
    }
-push $N35892400
+push $Nf0149c00
    Viewer {
     frame_range 1001-1076
     overscan 500
@@ -1193,10 +1205,11 @@ push $N35892400
   from0 rgba.blue
   to0 rgba.blue
   name Copy2
+  selected true
   xpos -927
   ypos 552
  }
-push $Nb9d23400
+push $Neff26400
  Dot {
   name Dot17
   xpos -1134
@@ -1219,7 +1232,7 @@ push $Nb9d23400
   xpos -899
   ypos 971
  }
-set N806c7000 [stack 0]
+set Nf01f4c00 [stack 0]
  Merge2 {
   inputs 2
   operation multiply
@@ -1228,7 +1241,7 @@ set N806c7000 [stack 0]
   xpos -927
   ypos 1149
  }
-push $N806c7000
+push $Nf01f4c00
  Dot {
   name Dot22
   xpos -1130

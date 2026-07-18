@@ -1,45 +1,46 @@
 Group {
- name OnOff_Switch
- tile_color 0x34eb6e00
- label ON
- note_font "Verdana Bold"
- selected true
- xpos 559
- ypos -316
- addUserKnob {20 User l Control}
- addUserKnob {26 text_3 l "" +STARTLINE T "  "}
- addUserKnob {22 off_btn l "<p style=\"color:#878787\">OFF</p>" T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\n\n\n# define variables–––\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\noffKnob = nuke.thisKnob()\n\n\n\nswitch = nuke.toNode('cm_Switch')\n\n\n#Switch to Off State\nk.setValue(\"OFF\")\nc.setValue(hex_color_to_int(\"eb4034\"))\noffKnob.setLabel(\"\"\"<p style=\"color:#eb4034\">OFF</p>\"\"\")\nnuke.thisNode().knob('on_btn').setLabel(\"\"\"<p style=\"color:#878787\">ON</p>\"\"\")\nswitch.knob('which').setValue(0)" +STARTLINE}
- addUserKnob {22 on_btn l "<p style=\"color:#34eb6e\">ON</p>" -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\n\n\n# define variables–––\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nonKnob = nuke.thisKnob()\n\n\n\nswitch = nuke.toNode('cm_Switch')\n\n\n\n#Switch to On State\nk.setValue(\"ON\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\nonKnob.setLabel(\"\"\"<p style=\"color:#34eb6e\">ON</p>\"\"\")\nnuke.thisNode().knob('off_btn').setLabel(\"\"\"<p style=\"color:#878787\">OFF</p>\"\"\")\nswitch.knob('which').setValue(1)"}
- addUserKnob {22 reload l "<p style=\"color:#b29da1\">RELOAD</p>" -STARTLINE T "import nuke\n\n\ndef reloadInput1Read():\n     for i in nuke.selectedNode().dependencies():\n        if i.Class() == \"Read\":  \n            i.knob(\"reload\").execute()\n    \nwith nuke.root():\n    reloadInput1Read()"}
- addUserKnob {26 text l "" +STARTLINE T "   "}
- addUserKnob {26 ""}
- addUserKnob {26 text_2 l "" +STARTLINE T "   "}
- addUserKnob {26 text_1 l "" +STARTLINE T "cm_OnOFFSwitch v1.0 - (c) 1991 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
+inputs 2
+name OnOff_Switch
+tile_color 0x34eb6e00
+label ON
+note_font "Verdana Bold"
+selected true
+xpos 5706
+ypos -7185
+addUserKnob {20 User l Control}
+addUserKnob {26 text_3 l "" +STARTLINE T "  "}
+addUserKnob {22 off_btn l "<p style=\"color:#878787\">OFF</p>" T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\n\n\n# define variables–––\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\noffKnob = nuke.thisKnob()\n\n\n\nswitch = nuke.toNode('cm_Switch')\n\n\n#Switch to Off State\nk.setValue(\"OFF\")\nc.setValue(hex_color_to_int(\"eb4034\"))\noffKnob.setLabel(\"\"\"<p style=\"color:#eb4034\">OFF</p>\"\"\")\nnuke.thisNode().knob('on_btn').setLabel(\"\"\"<p style=\"color:#878787\">ON</p>\"\"\")\nswitch.knob('which').setValue(0)" +STARTLINE}
+addUserKnob {22 on_btn l "<p style=\"color:#34eb6e\">ON</p>" -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\n\n\n# define variables–––\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nonKnob = nuke.thisKnob()\n\n\n\nswitch = nuke.toNode('cm_Switch')\n\n\n\n#Switch to On State\nk.setValue(\"ON\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\nonKnob.setLabel(\"\"\"<p style=\"color:#34eb6e\">ON</p>\"\"\")\nnuke.thisNode().knob('off_btn').setLabel(\"\"\"<p style=\"color:#878787\">OFF</p>\"\"\")\nswitch.knob('which').setValue(1)"}
+addUserKnob {22 reload l "<p style=\"color:#b29da1\">RELOAD</p>" -STARTLINE T "import nuke   \nn = nuke.thisNode()\nreadNode = n.input(1)\nreadNodeName = readNode.name()  \nnuke.toNode(readNodeName)\['reload'].execute()"}
+addUserKnob {26 text l "" +STARTLINE T "   "}
+addUserKnob {26 ""}
+addUserKnob {26 text_2 l "" +STARTLINE T "   "}
+addUserKnob {26 text_1 l "" +STARTLINE T "cm_OnOFFSwitch v1.0 - (c) 1991 | <a href=\"www.chrismccrowe.com\" style=\"color:#757575; text-decoration:none\">www.chrismccrowe.com</a>"}
 }
- Input {
-  inputs 0
-  name ON
-  xpos -203
-  ypos -301
-  number 1
- }
- Input {
-  inputs 0
-  name OFF
-  xpos -389
-  ypos -299
- }
- Switch {
-  inputs 2
-  which 1
-  name cm_Switch
-  tile_color 0x34eb6e00
-  xpos -297
-  ypos -228
- }
- Output {
-  name Output1
-  xpos -297
-  ypos -170
- }
+Input {
+inputs 0
+name ON
+xpos -203
+ypos -301
+number 1
+}
+Input {
+inputs 0
+name OFF
+xpos -389
+ypos -299
+}
+Switch {
+inputs 2
+which 1
+name cm_Switch
+tile_color 0x34eb6e00
+xpos -297
+ypos -228
+}
+Output {
+name Output1
+xpos -297
+ypos -170
+}
 end_group

@@ -5,12 +5,12 @@ Group {
  label ON
  note_font "Verdana Bold"
  selected true
- xpos 129
- ypos -216
+ xpos -40
+ ypos -133
  addUserKnob {20 User l Control}
  addUserKnob {26 text_3 l "" +STARTLINE T "  "}
- addUserKnob {22 off_btn l "<p style=\"color:#878787\">OFF</p>" T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\n\n\n# define variables–––\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\noffKnob = nuke.thisKnob()\n\n\n\nswitch = nuke.toNode('cm_Switch')\n\n\n#Switch to Off State\nk.setValue(\"OFF\")\nc.setValue(hex_color_to_int(\"eb4034\"))\noffKnob.setLabel(\"\"\"<p style=\"color:#eb4034\">OFF</p>\"\"\")\nnuke.thisNode().knob('on_btn').setLabel(\"\"\"<p style=\"color:#878787\">ON</p>\"\"\")\nswitch.knob('which').setValue(0)" +STARTLINE}
- addUserKnob {22 on_btn l "<p style=\"color:#34eb6e\">ON</p>" -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n\n\n\n# define variables–––\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nonKnob = nuke.thisKnob()\n\n\n\nswitch = nuke.toNode('cm_Switch')\n\n\n\n#Switch to On State\nk.setValue(\"ON\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\nonKnob.setLabel(\"\"\"<p style=\"color:#34eb6e\">ON</p>\"\"\")\nnuke.thisNode().knob('off_btn').setLabel(\"\"\"<p style=\"color:#878787\">OFF</p>\"\"\")\nswitch.knob('which').setValue(1)"}
+ addUserKnob {22 off_btn l "<p style=\"color:#878787\">OFF</p>" T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n# define variables–––\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\noffKnob = nuke.thisKnob()\nswitch = nuke.toNode('cm_Switch')\n\n#Switch to Off State\nk.setValue(\"OFF\")\nc.setValue(hex_color_to_int(\"eb4034\"))\noffKnob.setLabel(\"\"\"<p style=\"color:#eb4034\">OFF</p>\"\"\")\nnuke.thisNode().knob('on_btn').setLabel(\"\"\"<p style=\"color:#878787\">ON</p>\"\"\")\nswitch.knob('which').setValue(0)" +STARTLINE}
+ addUserKnob {22 on_btn l "<p style=\"color:#34eb6e\">ON</p>" -STARTLINE T "def hex_color_to_int(hexValue):\n    return int(hexValue+'00', 16)\n\n# define variables–––\nn = nuke.thisNode()\nk = n\['label']\nc = n\['tile_color']\nonKnob = nuke.thisKnob()\nswitch = nuke.toNode('cm_Switch')\n\n#Switch to On State\nk.setValue(\"ON\")\nc.setValue(hex_color_to_int(\"34eb6e\"))\nonKnob.setLabel(\"\"\"<p style=\"color:#34eb6e\">ON</p>\"\"\")\nnuke.thisNode().knob('off_btn').setLabel(\"\"\"<p style=\"color:#878787\">OFF</p>\"\"\")\nswitch.knob('which').setValue(1)"}
  addUserKnob {22 reload l "<p style=\"color:#E0E0E0\">RELOAD</p>" -STARTLINE T "n = nuke.thisNode()\ncheckNode = n.input(1)\nif checkNode == None:\n    nuke.message(\"Must be plugged into a read node.\")\nelif checkNode.Class() != \"Read\":\n    nuke.message(\"Must be plugged into a read node.\")\nelse:\n    n = nuke.thisNode()\n    readNode = n.input(1).name()\n    nuke.toNode(readNode)\['reload'].execute()"}
  addUserKnob {26 text l "" +STARTLINE T "   "}
  addUserKnob {26 ""}
